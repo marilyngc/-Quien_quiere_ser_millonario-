@@ -65,3 +65,47 @@ def validar_caracteres(mensaje: str) -> str:
             print("\nPrograma interrumpido por el usuario.")
             exit()  # Sale del programa limpiamente
 
+def get_certain_str(mensaje:str, mensaje_error:str, strings_determinados:tuple, reintentos:int) -> str:
+    """Obtener cierta cadena
+
+    Args:
+        mensaje (str): mensaje de ingreso
+        mensaje_error (str): mensaje de error
+        strings_determinados (tuple): tupla con elementos que datos posibles en minuscula
+        reintentos (int): cantidad de reintentos
+
+    Returns:
+        str: devuelve la cadena si es un elemento que se encuentra dentro de la lista | None si no se encuentra dentro de la lista
+    """
+    cadena = input(mensaje)
+    cadena = cadena.lower()
+    contador = 0
+    
+    while validate_str(cadena, strings_determinados) == False:
+        cadena = input(mensaje_error)
+        cadena = cadena.lower()
+        contador = contador + 1
+            
+        if contador == reintentos:
+            cadena = None
+            break
+        
+    return cadena        
+
+def validate_str (cadena:str, strings_determinados:tuple) -> bool: 
+    """Validar str
+
+    Args:
+        cadena (str): cadena ingresada
+        strings_determinados (tuple): lista con elementos que poseen los str permitidos
+
+    Returns:
+        bool: True si la cadena se encuentra dentro de los str permitidos | False si la cadena no se encuentra dentro de los elementos de la lista
+    """
+    retorno = False
+    for str in strings_determinados:
+        if str == cadena:
+            retorno = True
+            break
+        
+    return retorno

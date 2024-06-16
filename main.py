@@ -3,7 +3,7 @@ from package_input.button_class import Button
 from package_input.Archivos.parser_json import imprimir_preguntas,parsear_json
 from package_input.Archivos.parser_csv import leer_archivos
 
-from package_input.funciones import get_font
+from package_input.funciones import get_font, dibujar_titulo
 
 
 
@@ -45,20 +45,31 @@ background_jugar = pygame.image.load("imagenes\Background_jugar.jpg")
 
 
 def video_juegos():
- 
- 
-    
     while True:
-
-        
         menu_mouse_posicion = pygame.mouse.get_pos()
         
         ventana.blit(background,(0,0)) 
-        menu_texto = get_font(30).render("PUNTOS",True,(0,0,0),(0,150,255))
-        menu_recta = menu_texto.get_rect(center = (550, 100))
-        ventana.blit(menu_texto,menu_recta)  
+        dibujar_titulo(ventana,"Estamos en video juegos", 30, BLANCO, None,(550,100))
 
+        # EVENTOS
+        lista_eventos = pygame.event.get()
+        for evento in lista_eventos:
+            if evento.type == pygame.QUIT: # pregunto si presiono la X de la ventana
+                pygame.quit()  
+                sys.exit()     
+    
+            elif evento.type == pygame.MOUSEBUTTONDOWN :
+                pass
         
+        pygame.display.update()
+        
+
+def componentes():
+    while True:
+        menu_mouse_posicion = pygame.mouse.get_pos()
+        
+        ventana.blit(background,(0,0)) 
+        dibujar_titulo(ventana,"Estamos en componentes", 30, BLANCO, None,(550,100))
         
         # EVENTOS
         lista_eventos = pygame.event.get()
@@ -74,19 +85,18 @@ def video_juegos():
         
 def jugar():
     #Los botones se crean fuera del bucle principal para evitar recrearlos en cada iteración.
-    selecionar_tema_boton = Button(posicion=(550,300), texto_input= "VIDEO JUEGOS", font=get_font(30), base_color=BLANCO, hover_color=ROJO)
+    videojuegos_tema_boton = Button(posicion=(350,300), texto_input= "VIDEO JUEGOS", font=get_font(30), base_color=BLANCO, hover_color=ROJO)
+    componentes_tema_boton = Button(posicion=(750,300), texto_input= "COMPONENTES", font=get_font(30), base_color=BLANCO, hover_color=ROJO)
     regresar_boton = Button( posicion=(550,400), texto_input= "REGRESAR", font=get_font(30), base_color="#d7fcd4", hover_color=ROJO)
     
     while True:
         menu_mouse_posicion = pygame.mouse.get_pos()
         ventana.blit(background_jugar,[0,0]) 
-        menu_texto = get_font(30).render("Seleciona el tema",True,(0,0,0),(0,150,255))
-         # POSICION
-        menu_recta = menu_texto.get_rect(center = (550, 100))
-        ventana.blit(menu_texto,menu_recta)  
+        dibujar_titulo(ventana,"Elige una categoria", 30, BLANCO, None,(550,100))
         
         # Se dibujan los botones en cada iteración del bucle principal.
-        selecionar_tema_boton.draw(ventana)
+        videojuegos_tema_boton.draw(ventana)
+        componentes_tema_boton.draw(ventana)
         regresar_boton.draw(ventana)
         
         # EVENTOS
@@ -97,12 +107,15 @@ def jugar():
                 sys.exit()     
     
             elif evento.type == pygame.MOUSEBUTTONDOWN :
-                if selecionar_tema_boton.mouse_movimiento(menu_mouse_posicion):
+                if videojuegos_tema_boton.mouse_movimiento(menu_mouse_posicion):
                     video_juegos()
+                if componentes_tema_boton.mouse_movimiento(menu_mouse_posicion):
+                    componentes()
                 if regresar_boton.mouse_movimiento(menu_mouse_posicion):
                     main_menu()
             elif evento.type == pygame.MOUSEMOTION:
-                selecionar_tema_boton.actualizar_color_texto(menu_mouse_posicion)
+                videojuegos_tema_boton.actualizar_color_texto(menu_mouse_posicion)
+                componentes_tema_boton.actualizar_color_texto(menu_mouse_posicion)
                 regresar_boton.actualizar_color_texto(menu_mouse_posicion)
 
         pygame.display.update()

@@ -24,5 +24,9 @@ def get_font(tamaño):
 #         pygame.display.flip()
 #         clock.tick(1)
 
-
+# dibuja texto
+def dibujar_titulo(ventana, mensaje,tamaño_fuente ,color_texto, color_fondo, posicion): 
+        menu_texto = get_font(tamaño_fuente).render(mensaje, True, color_texto, color_fondo)
+        menu_recta = menu_texto.get_rect(center = (posicion[0], posicion[1]))
+        ventana.blit(menu_texto,menu_recta)  
 

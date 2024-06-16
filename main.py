@@ -1,11 +1,18 @@
 import pygame, sys
 from package_input.button_class import Button
+from package_input.Archivos.parser_json import imprimir_preguntas,parsear_json
 
 
 
 pygame.init() # inicializado pygame
+path_preguntas ="package_input\Archivos\documentos\preguntas_respuestas.json"
 
+preguntas_respuestas = parsear_json(path_preguntas)
+# Ejecutar la función para imprimir las preguntas y respuestas
+imprimir_preguntas_preguntas = imprimir_preguntas(preguntas_respuestas)
+print(imprimir_preguntas)
 
+## colores
 BLANCO = (255, 255, 255)
 NEGRO = (0, 0, 0)
 ROJO = (255, 0, 0)

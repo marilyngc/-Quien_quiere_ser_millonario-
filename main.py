@@ -1,16 +1,25 @@
 import pygame, sys
 from package_input.button_class import Button
 from package_input.Archivos.parser_json import imprimir_preguntas,parsear_json
+from package_input.Archivos.parser_csv import leer_archivos
+
+from package_input.funciones import get_font
 
 
 
 pygame.init() # inicializado pygame
+path_comodines = "package_input\Archivos\documentos\comodines.csv"
 path_preguntas ="package_input\Archivos\documentos\preguntas_respuestas.json"
 
+## json
 preguntas_respuestas = parsear_json(path_preguntas)
-# Ejecutar la función para imprimir las preguntas y respuestas
-imprimir_preguntas_preguntas = imprimir_preguntas(preguntas_respuestas)
+imprimir_preguntas_preguntas = imprimir_preguntas(preguntas_respuestas)# Ejecutar la función para imprimir las preguntas y respuestas
 print(imprimir_preguntas)
+
+## csv
+lista_comodines = []
+imprimir_comodines = leer_archivos(path_comodines,lista_comodines)
+print(imprimir_comodines)
 
 ## colores
 BLANCO = (255, 255, 255)
@@ -34,10 +43,35 @@ pygame.display.set_icon(icono)
 background = pygame.image.load("imagenes\Background.png")
 background_jugar = pygame.image.load("imagenes\Background_jugar.jpg")
 
-# crear fuente
-def get_font(tamaño):
-    return pygame.font.Font("font\Font.ttf",tamaño) # definir la configuracion de la fuente
 
+def video_juegos():
+ 
+ 
+    
+    while True:
+
+        
+        menu_mouse_posicion = pygame.mouse.get_pos()
+        
+        ventana.blit(background,(0,0)) 
+        menu_texto = get_font(30).render("PUNTOS",True,(0,0,0),(0,150,255))
+        menu_recta = menu_texto.get_rect(center = (550, 100))
+        ventana.blit(menu_texto,menu_recta)  
+
+        
+        
+        # EVENTOS
+        lista_eventos = pygame.event.get()
+        for evento in lista_eventos:
+            if evento.type == pygame.QUIT: # pregunto si presiono la X de la ventana
+                pygame.quit()  
+                sys.exit()     
+    
+            elif evento.type == pygame.MOUSEBUTTONDOWN :
+                pass
+        
+        pygame.display.update()
+        
 def jugar():
     #Los botones se crean fuera del bucle principal para evitar recrearlos en cada iteración.
     selecionar_tema_boton = Button(posicion=(550,300), texto_input= "VIDEO JUEGOS", font=get_font(30), base_color=BLANCO, hover_color=ROJO)
@@ -64,7 +98,7 @@ def jugar():
     
             elif evento.type == pygame.MOUSEBUTTONDOWN :
                 if selecionar_tema_boton.mouse_movimiento(menu_mouse_posicion):
-                    pass
+                    video_juegos()
                 if regresar_boton.mouse_movimiento(menu_mouse_posicion):
                     main_menu()
             elif evento.type == pygame.MOUSEMOTION:

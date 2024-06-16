@@ -1,0 +1,28 @@
+import pygame
+
+
+## colores
+BLANCO = (255, 255, 255)
+NEGRO = (0, 0, 0)
+ROJO = (255, 0, 0)
+AZUL = (0, 0, 255)
+VERDE = (0, 255, 0)
+AZUL_CLARO = (0, 150, 255)
+
+tiempo_total = 30
+# crear fuente
+def get_font(tamaño):
+    return pygame.font.Font("font\Font.ttf",tamaño) # definir la configuracion de la fuente
+
+# Función para actualizar el temporizador usando Clock
+# def mostrar_temporizador(ventana):
+#     clock = pygame.time.Clock()  # Crear un objeto Clock
+#     for segundos in range(30):
+        
+#         texto_puntos = Button(posicion=(550,300), texto_input= f"{segundos}", font=get_font(30), base_color=BLANCO, hover_color=ROJO)
+#         texto_puntos.draw(ventana)
+#         pygame.display.flip()
+#         clock.tick(1)
+
+
+

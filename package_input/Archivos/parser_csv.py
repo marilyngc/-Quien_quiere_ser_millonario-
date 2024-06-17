@@ -20,7 +20,6 @@ def leer_archivos(path:str, lista):
                 lista.append(diccionario)
         
         retorno =  lista
-               
                 
     except:
         retorno =  "A ocurrido un error al generar la lista en el archivo"  

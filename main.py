@@ -16,10 +16,10 @@ imprimir_preguntas(preguntas_respuestas)# Ejecutar la función para imprimir las
 # print(imprimir_preguntas)
 
 ## csv
-print("comodines")
-lista_comodines = []
-imprimir_comodines = leer_archivos(path_comodines,lista_comodines)
-print(imprimir_comodines)
+# print("comodines")
+# lista_comodines = []
+# imprimir_comodines = leer_archivos(path_comodines,lista_comodines)
+# print(imprimir_comodines)
 
 ## colores
 BLANCO = (255, 255, 255)
@@ -34,7 +34,7 @@ LARGO_VENTANA = 600
 TAMAÑO_VENTANA = (ANCHO_VENTANA, LARGO_VENTANA)
 ventana = pygame.display.set_mode(TAMAÑO_VENTANA) # pixeles
 
-pygame.display.set_caption("Quien quiere ser millonario") # titulo ed la ventana
+pygame.display.set_caption("Quien quiere ser millonario") # titulo de la ventana
 
 # traigo la imagen
 icono = pygame.image.load("imagenes\icono\icono_milonario.png")
@@ -89,7 +89,7 @@ def componentes():
         
 def jugar():
     #Los botones se crean fuera del bucle principal para evitar recrearlos en cada iteración.
-    videojuegos_tema_boton = Button(posicion=(350,300), texto_input= "VIDEO JUEGOS", font=get_font(30), base_color=BLANCO, hover_color=ROJO)
+    videojuegos_tema_boton = Button(posicion=(350,300), texto_input= "VIDEO JUEGOS", font=get_font(30), base_color=BLANCO, hover_color=ROJO) #setea los botones desde la clase button
     componentes_tema_boton = Button(posicion=(750,300), texto_input= "COMPONENTES", font=get_font(30), base_color=BLANCO, hover_color=ROJO)
     regresar_boton = Button( posicion=(550,400), texto_input= "REGRESAR", font=get_font(30), base_color="#d7fcd4", hover_color=ROJO)
     

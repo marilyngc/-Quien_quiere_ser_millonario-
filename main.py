@@ -3,9 +3,7 @@ from package_input.button_class import Button
 from package_input.Archivos.parser_json import imprimir_preguntas,parsear_json
 from package_input.Archivos.parser_csv import leer_archivos
 
-from package_input.funciones import get_font, dibujar_titulo
-
-
+from package_input.texto_funciones import get_font, dibujar_titulo
 
 pygame.init() # inicializado pygame
 path_comodines = "package_input\Archivos\documentos\comodines.csv"
@@ -13,10 +11,12 @@ path_preguntas ="package_input\Archivos\documentos\preguntas_respuestas.json"
 
 ## json
 preguntas_respuestas = parsear_json(path_preguntas)
-imprimir_preguntas_preguntas = imprimir_preguntas(preguntas_respuestas)# Ejecutar la función para imprimir las preguntas y respuestas
-print(imprimir_preguntas)
+print("preguntas")
+imprimir_preguntas(preguntas_respuestas)# Ejecutar la función para imprimir las preguntas y respuestas
+# print(imprimir_preguntas)
 
 ## csv
+print("comodines")
 lista_comodines = []
 imprimir_comodines = leer_archivos(path_comodines,lista_comodines)
 print(imprimir_comodines)
@@ -29,8 +29,10 @@ AZUL = (0, 0, 255)
 VERDE = (0, 255, 0)
 AZUL_CLARO = (0, 150, 255)
 
-
-ventana = pygame.display.set_mode((1100, 600)) # pixeles
+ANCHO_VENTANA = 1100
+LARGO_VENTANA = 600
+TAMAÑO_VENTANA = (ANCHO_VENTANA, LARGO_VENTANA)
+ventana = pygame.display.set_mode(TAMAÑO_VENTANA) # pixeles
 
 pygame.display.set_caption("Quien quiere ser millonario") # titulo ed la ventana
 
@@ -41,8 +43,10 @@ pygame.display.set_icon(icono)
 
 # creo imagen de la superficie
 background = pygame.image.load("imagenes\Background.png")
-background_jugar = pygame.image.load("imagenes\Background_jugar.jpg")
+background = pygame.transform.scale(background, (TAMAÑO_VENTANA))
 
+background_jugar = pygame.image.load("imagenes\Background_jugar.jpg")
+background_jugar = pygame.transform.scale(background_jugar, (TAMAÑO_VENTANA))
 
 def video_juegos():
     while True:
@@ -91,7 +95,7 @@ def jugar():
     
     while True:
         menu_mouse_posicion = pygame.mouse.get_pos()
-        ventana.blit(background_jugar,[0,0]) 
+        ventana.blit(background_jugar,(0,0)) 
         dibujar_titulo(ventana,"Elige una categoria", 30, BLANCO, None,(550,100))
         
         # Se dibujan los botones en cada iteración del bucle principal.

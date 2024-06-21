@@ -25,9 +25,8 @@ def parsear_json(path:str) -> list:
 
 def imprimir_preguntas(json_data):
     for pregunta in json_data['videojuegos']:
-        print("Pregunta:", pregunta['pregunta'])
+        print(f"Pregunta:{pregunta['pregunta']}")
         for opcion in pregunta['opciones']:
             print("-", opcion)
-        print("Respuesta correcta:", pregunta['correcta'])
-        print("Dificultad:", pregunta['dificultad'])
-        print()  # Salto de línea entre preguntas
+        print(f"Respuesta correcta: {pregunta['correcta']}")
+        print(f"Dificultad: {pregunta['dificultad']}\n") # Salto de línea entre preguntas

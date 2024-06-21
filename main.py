@@ -50,7 +50,7 @@ background_jugar = pygame.transform.scale(background_jugar, (TAMAÑO_VENTANA))
 
 def video_juegos():
     while True:
-        menu_mouse_posicion = pygame.mouse.get_pos()
+        # menu_mouse_posicion = pygame.mouse.get_pos()
         
         ventana.blit(background,(0,0)) 
         dibujar_titulo(ventana,"Estamos en video juegos", 30, BLANCO, None,(550,100))
@@ -70,7 +70,7 @@ def video_juegos():
 
 def componentes():
     while True:
-        menu_mouse_posicion = pygame.mouse.get_pos()
+        # menu_mouse_posicion = pygame.mouse.get_pos()
         
         ventana.blit(background,(0,0)) 
         dibujar_titulo(ventana,"Estamos en componentes", 30, BLANCO, None,(550,100))

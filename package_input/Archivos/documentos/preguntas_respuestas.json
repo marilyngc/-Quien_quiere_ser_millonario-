@@ -1,118 +1,118 @@
 {
-    "videojuegos": [ 
-        {
-          "pregunta": "¿Cuál es el nombre del personaje principal que el jugador puede elegir al inicio del juego en Genshin Impact?",
-          "correcta": "El Viajero (Aether o Lumine)",
-          "opciones": ["Diluc", "Mona", "Kaeya","El Viajero (Aether o Lumine)"],
-          "dificultad": "facil"
-        },
-        {
-          "pregunta": "¿Cuántos personajes principales se pueden controlar en GTA V?",
-          "correcta": "Tres",
-          "opciones": ["Uno", "Cuatro", "Cinco","Tres"],
-          "dificultad": "facil"
-        },
-        {
-          "pregunta": "¿Cuál es el nombre del modo de juego en Fortnite donde los jugadores compiten para ser el último en pie?",
-          "correcta": "Battle Royale",
-          "opciones": ["Save the World", "Creative Mode", "Arena Mode","Battle Royale"],
-          "dificultad": "facil"
-        },
-        {
-          "pregunta": "¿Cuál es el nombre de la región inspirada en China dentro del juego Genshin Impact?",
-          "correcta": "Liyue",
-          "opciones": ["Mondstadt", "Inazuma", "Sumeru","Liyue"],
-          "dificultad": "medio"
-        },
-        {
-          "pregunta": "¿Cuál es el nombre del banco que Michael y Trevor roban al inicio de la historia en GTA V?",
-          "correcta": "Banco de Ludendorff",
-          "opciones": ["Fleeca Bank", "Pacific Standard Public Deposit Bank", "Union Depository","Banco de Ludendorff"],
-          "dificultad": "medio"
-        },
-        {
-          "pregunta": "¿Qué temporada introdujo el evento de colaboración con Marvel que incluía a personajes como Iron Man y Thor en Fortnite?",
-          "correcta": "Temporada 4, Capítulo 2",
-          "opciones": ["Temporada 5, Capítulo 2", "Temporada 3, Capítulo 1", "Temporada 2, Capítulo 2", "Temporada 4, Capítulo 2"],
-          "dificultad": "medio"
-        },
-        {
-          "pregunta": "¿Qué material necesitas para construir un portal al Nether en Minecraft?",
-          "correcta": "Obsidiana",
-          "opciones": ["Diamante", "Piedra", "Arena","Obsidiana"],
-          "dificultad": "dificil"
-          
-        },
-        {
-          "pregunta": "¿Qué dispositivos se usan comúnmente para jugar Osu!?",
-          "correcta": "Tableta gráfica y ratón",
-          "opciones": ["Teclado y monitor", "Joystick y pantalla táctil", "Gamepad y auriculares","Tableta gráfica y ratón"],
-          "dificultad": "dificil"
-        },
-        {
-          "pregunta": "¿Qué mod en Osu! aumenta la velocidad de la canción y las notas?",
-          "correcta": "Double Time (DT)",
-          "opciones": ["Hard Rock (HR)", "Hidden (HD)", "Flashlight (FL)","Double Time (DT)"],
-          "dificultad": "dificil"
-        }
-    ],
-    "componentes_computadora": [ 
-        {
-          "pregunta": "¿Qué componente de la computadora es responsable de ejecutar programas y procesar datos?",
-          "correcta": "CPU (Unidad Central de Procesamiento)",
-          "opciones": ["GPU (Unidad de Procesamiento Gráfico)", "RAM (Memoria de Acceso Aleatorio)", "SSD (Unidad de Estado Sólido)","CPU (Unidad Central de Procesamiento)"],
-          "dificultad": "facil"
-        },
-        {
-          "pregunta": "¿Qué tipo de memoria es volátil y se utiliza para almacenar datos temporalmente mientras la computadora está encendida?",
-          "correcta": "RAM (Memoria de Acceso Aleatorio)",
-          "opciones": ["HDD (Disco Duro)", "ROM (Memoria de Solo Lectura)", "SSD (Unidad de Estado Sólido)","RAM (Memoria de Acceso Aleatorio)"],
-          "dificultad": "facil"
-        },
-        {
-          "pregunta": "¿Qué dispositivo de almacenamiento utiliza discos magnéticos para almacenar datos?",
-          "correcta": "Disco duro (HDD)",
-          "opciones": ["SSD (Unidad de Estado Sólido)", "RAM (Memoria de Acceso Aleatorio)", "CPU (Unidad Central de Procesamiento)","Disco duro (HDD)"],
-          "dificultad": "facil"
-        },
-        {
-          "pregunta": "¿Qué componente es responsable de convertir la corriente alterna (AC) de la toma de corriente en corriente continua (DC) utilizada por la computadora?",
-          "correcta": "Fuente de alimentación (PSU)",
-          "opciones": ["GPU (Unidad de Procesamiento Gráfico)", "HDD (Disco Duro)", "Placa base (Motherboard)","Fuente de alimentación (PSU)"],
-          "dificultad": "medio"
-        },
-        {
-          "pregunta": "¿Cuál es el nombre del componente que conecta todos los demás componentes de la computadora y permite la comunicación entre ellos?",
-          "correcta": "Placa base (Motherboard)",
-          "opciones": ["CPU (Unidad Central de Procesamiento)", "RAM (Memoria de Acceso Aleatorio)", "Fuente de alimentación (PSU)","Placa base (Motherboard)"],
-          "dificultad": "medio"
-          
-        },
-        {
-          "pregunta": "¿Qué tipo de memoria no volátil se utiliza comúnmente para almacenar el sistema operativo y los archivos del usuario en una computadora moderna?",
-          "correcta": "SSD (Unidad de Estado Sólido)",
-          "opciones": ["RAM (Memoria de Acceso Aleatorio)", "GPU (Unidad de Procesamiento Gráfico)", "ROM (Memoria de Solo Lectura)","SSD (Unidad de Estado Sólido)"],
-          "dificultad": "medio"
-        },
-        {
-          "pregunta": "¿Qué interfaz comúnmente utilizada conecta dispositivos periféricos como ratones y teclados a la computadora?",
-          "correcta": "USB (Universal Serial Bus)",
-          "opciones": ["HDMI (Interfaz Multimedia de Alta Definición)", "PCIe (Interconexión de Componentes Periféricos Express)", "SATA (Interfaz de Adjuntos de Tecnología Avanzada en Serie)","USB (Universal Serial Bus)"],
-          "dificultad": "dificil"
-        },
-        {
-          "pregunta": "¿Qué tecnología de pantalla utiliza diodos emisores de luz para producir imágenes y es conocida por su alta eficiencia energética y contraste?",
-          "correcta": "Pantalla OLED (Diodo Orgánico Emisor de Luz)",
-          "opciones": ["Pantalla LCD (Pantalla de Cristal Líquido)", "Pantalla CRT (Tubo de Rayos Catódicos)", "Pantalla LED (Diodo Emisor de Luz)","Pantalla OLED (Diodo Orgánico Emisor de Luz)"],
-          "dificultad": "dificil"
-        },
-        {
-          "pregunta": "¿Qué tipo de memoria es utilizada para almacenar las instrucciones básicas del sistema y no se borra al apagar la computadora?",
-          "correcta": "ROM (Memoria de Solo Lectura)",
-          "opciones": ["RAM (Memoria de Acceso Aleatorio)", "HDD (Disco Duro)", "SSD (Unidad de Estado Sólido)","ROM (Memoria de Solo Lectura)"],
-          "dificultad": "dificil"
-        }
-    ]
+  "videojuegos": [ 
+    {
+      "pregunta": "¿Cuál es el nombre del personaje principal que el jugador puede elegir al inicio del juego en Genshin Impact?",
+      "correcta": "El Viajero (Aether o Lumine)",
+      "opciones": ["Diluc", "Mona", "Kaeya","El Viajero (Aether o Lumine)"],
+      "dificultad": "facil"
+    },
+    {
+      "pregunta": "¿Cuántos personajes principales se pueden controlar en GTA V?",
+      "correcta": "Tres",
+      "opciones": ["Uno", "Cuatro", "Cinco","Tres"],
+      "dificultad": "facil"
+    },
+    {
+      "pregunta": "¿Cuál es el nombre del modo de juego en Fortnite donde los jugadores compiten para ser el último en pie?",
+      "correcta": "Battle Royale",
+      "opciones": ["Save the World", "Creative Mode", "Arena Mode","Battle Royale"],
+      "dificultad": "facil"
+    },
+    {
+      "pregunta": "¿Cuál es el nombre de la región inspirada en China dentro del juego Genshin Impact?",
+      "correcta": "Liyue",
+      "opciones": ["Mondstadt", "Inazuma", "Sumeru","Liyue"],
+      "dificultad": "medio"
+    },
+    {
+      "pregunta": "¿Cuál es el nombre del banco que Michael y Trevor roban al inicio de la historia en GTA V?",
+      "correcta": "Banco de Ludendorff",
+      "opciones": ["Fleeca Bank", "Pacific Standard Public Deposit Bank", "Union Depository","Banco de Ludendorff"],
+      "dificultad": "medio"
+    },
+    {
+      "pregunta": "¿Qué temporada introdujo el evento de colaboración con Marvel que incluía a personajes como Iron Man y Thor en Fortnite?",
+      "correcta": "Temporada 4, Capítulo 2",
+      "opciones": ["Temporada 5, Capítulo 2", "Temporada 3, Capítulo 1", "Temporada 2, Capítulo 2", "Temporada 4, Capítulo 2"],
+      "dificultad": "medio"
+    },
+    {
+      "pregunta": "¿Qué material necesitas para construir un portal al Nether en Minecraft?",
+      "correcta": "Obsidiana",
+      "opciones": ["Diamante", "Piedra", "Arena","Obsidiana"],
+      "dificultad": "dificil"
+      
+    },
+    {
+      "pregunta": "¿Qué dispositivos se usan comúnmente para jugar Osu!?",
+      "correcta": "Tableta gráfica y ratón",
+      "opciones": ["Teclado y monitor", "Joystick y pantalla táctil", "Gamepad y auriculares","Tableta gráfica y ratón"],
+      "dificultad": "dificil"
+    },
+    {
+      "pregunta": "¿Qué mod en Osu! aumenta la velocidad de la canción y las notas?",
+      "correcta": "Double Time (DT)",
+      "opciones": ["Hard Rock (HR)", "Hidden (HD)", "Flashlight (FL)","Double Time (DT)"],
+      "dificultad": "dificil"
+    }
+  ],
+  "componentes_computadora": [ 
+    {
+      "pregunta": "¿Qué componente de la computadora es responsable de ejecutar programas y procesar datos?",
+      "correcta": "CPU (Unidad Central de Procesamiento)",
+      "opciones": ["GPU (Unidad de Procesamiento Gráfico)", "RAM (Memoria de Acceso Aleatorio)", "SSD (Unidad de Estado Sólido)","CPU (Unidad Central de Procesamiento)"],
+      "dificultad": "facil"
+    },
+    {
+      "pregunta": "¿Qué tipo de memoria es volátil y se utiliza para almacenar datos temporalmente mientras la computadora está encendida?",
+      "correcta": "RAM (Memoria de Acceso Aleatorio)",
+      "opciones": ["HDD (Disco Duro)", "ROM (Memoria de Solo Lectura)", "SSD (Unidad de Estado Sólido)","RAM (Memoria de Acceso Aleatorio)"],
+      "dificultad": "facil"
+    },
+    {
+      "pregunta": "¿Qué dispositivo de almacenamiento utiliza discos magnéticos para almacenar datos?",
+      "correcta": "Disco duro (HDD)",
+      "opciones": ["SSD (Unidad de Estado Sólido)", "RAM (Memoria de Acceso Aleatorio)", "CPU (Unidad Central de Procesamiento)","Disco duro (HDD)"],
+      "dificultad": "facil"
+    },
+    {
+      "pregunta": "¿Qué componente es responsable de convertir la corriente alterna (AC) de la toma de corriente en corriente continua (DC) utilizada por la computadora?",
+      "correcta": "Fuente de alimentación (PSU)",
+      "opciones": ["GPU (Unidad de Procesamiento Gráfico)", "HDD (Disco Duro)", "Placa base (Motherboard)","Fuente de alimentación (PSU)"],
+      "dificultad": "medio"
+    },
+    {
+      "pregunta": "¿Cuál es el nombre del componente que conecta todos los demás componentes de la computadora y permite la comunicación entre ellos?",
+      "correcta": "Placa base (Motherboard)",
+      "opciones": ["CPU (Unidad Central de Procesamiento)", "RAM (Memoria de Acceso Aleatorio)", "Fuente de alimentación (PSU)","Placa base (Motherboard)"],
+      "dificultad": "medio"
+      
+    },
+    {
+      "pregunta": "¿Qué tipo de memoria no volátil se utiliza comúnmente para almacenar el sistema operativo y los archivos del usuario en una computadora moderna?",
+      "correcta": "SSD (Unidad de Estado Sólido)",
+      "opciones": ["RAM (Memoria de Acceso Aleatorio)", "GPU (Unidad de Procesamiento Gráfico)", "ROM (Memoria de Solo Lectura)","SSD (Unidad de Estado Sólido)"],
+      "dificultad": "medio"
+    },
+    {
+      "pregunta": "¿Qué interfaz comúnmente utilizada conecta dispositivos periféricos como ratones y teclados a la computadora?",
+      "correcta": "USB (Universal Serial Bus)",
+      "opciones": ["HDMI (Interfaz Multimedia de Alta Definición)", "PCIe (Interconexión de Componentes Periféricos Express)", "SATA (Interfaz de Adjuntos de Tecnología Avanzada en Serie)","USB (Universal Serial Bus)"],
+      "dificultad": "dificil"
+    },
+    {
+      "pregunta": "¿Qué tecnología de pantalla utiliza diodos emisores de luz para producir imágenes y es conocida por su alta eficiencia energética y contraste?",
+      "correcta": "Pantalla OLED (Diodo Orgánico Emisor de Luz)",
+      "opciones": ["Pantalla LCD (Pantalla de Cristal Líquido)", "Pantalla CRT (Tubo de Rayos Catódicos)", "Pantalla LED (Diodo Emisor de Luz)","Pantalla OLED (Diodo Orgánico Emisor de Luz)"],
+      "dificultad": "dificil"
+    },
+    {
+      "pregunta": "¿Qué tipo de memoria es utilizada para almacenar las instrucciones básicas del sistema y no se borra al apagar la computadora?",
+      "correcta": "ROM (Memoria de Solo Lectura)",
+      "opciones": ["RAM (Memoria de Acceso Aleatorio)", "HDD (Disco Duro)", "SSD (Unidad de Estado Sólido)","ROM (Memoria de Solo Lectura)"],
+      "dificultad": "dificil"
+    }
+  ]
     
 }
   

@@ -1,10 +1,20 @@
 class Pregunta: 
-    def __init__(self, tematica:dict) -> None:
-        self.pregunta = tematica["pregunta"]
-        self.opciones = tematica["opciones"]
-        self.correcta = tematica["correcta"]
-        self.dificultad = tematica["dificultad"]
+    def __init__(self, diccionario: dict) -> None:
         
-    def es_correcta(diccionario_tematica:dict):
+        self.pregunta = diccionario['pregunta']
+        self.opciones = diccionario["opciones"]
+        self.correcta = diccionario["correcta"]
+        self.dificultad = diccionario["dificultad"]
+    
+    
+    def es_correcta(lista_diccionarios:list[dict], respuesta:str):
         
-        pass
+        retorno = False
+        for pregunta in lista_diccionarios:
+            if pregunta.correcta == respuesta:
+                retorno = True
+                break
+            
+        return retorno
+    
+    

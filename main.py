@@ -3,7 +3,7 @@ from package_input.button_class import Button
 from package_input.Archivos.parser_json import imprimir_preguntas,parsear_json
 from package_input.Archivos.parser_csv import leer_archivos
 
-from package_input.texto_funciones import get_font, dibujar_titulo
+from package_input.funciones import *
 
 pygame.init() # inicializado pygame
 path_comodines = "package_input\Archivos\documentos\comodines.csv"
@@ -13,7 +13,8 @@ path_preguntas ="package_input\Archivos\documentos\preguntas_respuestas.json"
 preguntas_respuestas = parsear_json(path_preguntas)
 print("preguntas")
 imprimir_preguntas(preguntas_respuestas)# Ejecutar la función para imprimir las preguntas y respuestas
-# print(imprimir_preguntas)
+videojuegos = establecer_preguntas(preguntas_respuestas["videojuegos"])
+componentes = establecer_preguntas(preguntas_respuestas["componentes_computadora"])
 
 ## csv
 # print("comodines")

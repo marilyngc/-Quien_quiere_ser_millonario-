@@ -35,11 +35,13 @@ class Pregunta:
                 
         return None  # Si no se clickeó ninguna opción, devuelve None        
       
-    def es_correcta(self,opcion):
+    def es_correcta(self,opcion) -> bool:
+        retorno = False 
         if opcion == self.correcta:
-            retorno = print("repuesta correcta :D")
+            print("repuesta correcta :D")
+            retorno = True
         else:
-            retorno = print("respuesta incorrecta :C")    
+            print("respuesta incorrecta :C")
             
         return retorno
     

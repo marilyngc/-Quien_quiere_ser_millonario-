@@ -1,17 +1,16 @@
 import pygame, sys
-from package_input.button_class import Button
-from package_input.pregunta_class import Pregunta
+from funciones.button_class import Button
+from funciones.pregunta_class import Pregunta
 
-# comentario de prueba
+from Archivos.parser_json import imprimir_preguntas,parsear_json
+from Archivos.parser_csv import leer_archivos
 
-from package_input.Archivos.parser_json import imprimir_preguntas,parsear_json
-from package_input.Archivos.parser_csv import leer_archivos
-
-from package_input.funciones import *
+from funciones.funciones import *
+from funciones.preguntas_funciones import *
 
 pygame.init() # inicializado pygame
-path_comodines = "package_input\Archivos\documentos\comodines.csv"
-path_preguntas ="package_input\Archivos\documentos\preguntas_respuestas.json"
+path_comodines = "Archivos\documentos\comodines.csv"
+path_preguntas ="Archivos\documentos\preguntas_respuestas.json"
 
 ## json
 preguntas_respuestas = parsear_json(path_preguntas)
@@ -50,15 +49,16 @@ background_jugar = pygame.image.load("imagenes\Background_jugar.jpg")
 background_jugar = pygame.transform.scale(background_jugar, (TAMAÑO_VENTANA))
 
 def video_juegos():
-    for pregunta_texto in preguntas_respuestas["videojuegos"]:
-        pregunta = Pregunta(pregunta_texto)
-        break
+    # for pregunta_texto in preguntas_respuestas["videojuegos"]:
+    #     pregunta = Pregunta(pregunta_texto)
+    #     break
     
     # preguntas_random = preguntas_respuestas["videojuegos"][0]    
     # pregunta = Pregunta(preguntas_random)
-    
+    valor = 0
     
     while True:
+        pregunta = preguntas_progresivas(preguntas_respuestas["videojuegos"],valor)
         mouse_posicion = pygame.mouse.get_pos()
         
         ventana.blit(background,(0,0)) 
@@ -67,8 +67,6 @@ def video_juegos():
         # muestra las preguntas en ventana
         pregunta.mostrar_preguntas(ventana)
         
-        
-       
         # EVENTOS
         lista_eventos = pygame.event.get()
         for evento in lista_eventos:
@@ -79,7 +77,8 @@ def video_juegos():
             elif evento.type == pygame.MOUSEBUTTONDOWN :
                 opcion_clickeada = pregunta.mouse_movimiento(mouse_posicion)
                 if opcion_clickeada :
-                    pregunta.es_correcta(opcion_clickeada)
+                    if pregunta.es_correcta(opcion_clickeada):
+                        valor += 1
                     
         pygame.display.update()
         

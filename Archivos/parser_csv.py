@@ -11,8 +11,8 @@ def leer_archivos(path:str, lista):
                     continue
                 registro = re.split(",|\n",linea)
                 diccionario = {
-                    "id": registro[0],
-                    "pregunta": registro[1],
+                    "pregunta": registro[0],
+                    "pista": registro[1],
                     "comodin": registro[2],
                     "tipo": registro[3],
                 }

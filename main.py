@@ -48,6 +48,19 @@ background = pygame.transform.scale(background, (TAMAÑO_VENTANA))
 background_jugar = pygame.image.load("imagenes\Background_jugar.jpg")
 background_jugar = pygame.transform.scale(background_jugar, (TAMAÑO_VENTANA))
 
+def perdedor():
+    while True:
+        ventana.blit(background,(0,0)) 
+        dibujar_titulo(ventana,"Perdiste!", 30, BLANCO, None,(550,100))
+        
+        lista_eventos = pygame.event.get()
+        for evento in lista_eventos:
+            if evento.type == pygame.QUIT: # pregunto si presiono la X de la ventana
+                pygame.quit()  
+                sys.exit()     
+                
+        pygame.display.update()
+
 def video_juegos():
     # for pregunta_texto in preguntas_respuestas["videojuegos"]:
     #     pregunta = Pregunta(pregunta_texto)
@@ -56,6 +69,7 @@ def video_juegos():
     # preguntas_random = preguntas_respuestas["videojuegos"][0]    
     # pregunta = Pregunta(preguntas_random)
     valor = 0
+    ganancia = 0
     
     while True:
         pregunta = preguntas_progresivas(preguntas_respuestas["videojuegos"],valor)
@@ -79,7 +93,8 @@ def video_juegos():
                 if opcion_clickeada :
                     if pregunta.es_correcta(opcion_clickeada):
                         valor += 1
-                    
+                    else : 
+                        perdedor()
         pygame.display.update()
         
 

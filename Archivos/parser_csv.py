@@ -13,8 +13,6 @@ def leer_archivos(path:str, lista):
                 diccionario = {
                     "pregunta": registro[0],
                     "pista": registro[1],
-                    "comodin": registro[2],
-                    "tipo": registro[3],
                 }
                
                 lista.append(diccionario)

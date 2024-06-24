@@ -1,7 +1,7 @@
 import random
 from Archivos.parser_json import parsear_json
-from pregunta_class import *
-path_preguntas ="package_input\Archivos\documentos\preguntas_respuestas.json"
+from .pregunta_class import *
+path_preguntas ="Archivos\documentos\preguntas_respuestas.json"
 
 
 
@@ -20,14 +20,12 @@ def crear_porcenajes(lista_porcentaje:list) -> list:
 
     return lista_porcentaje
 
-lista_porcentaje = []
-crear_porcenajes(lista_porcentaje)
-print(lista_porcentaje)
+# lista_porcentaje = []
+# crear_porcenajes(lista_porcentaje)
+# print(lista_porcentaje)
 
-def eliminar_opciones(diccionario_preguntas): 
-    determinar = pregunta.es_correcta(diccionario_preguntas)
-    print(determinar)
-    if determinar:
-        pass
+# def eliminar_opciones(diccionario_preguntas): 
+#     if pregunta.es_correcta(diccionario_preguntas):
+# 
+    
 
-eliminar_opciones(preguntas_respuestas["videojuegos"])

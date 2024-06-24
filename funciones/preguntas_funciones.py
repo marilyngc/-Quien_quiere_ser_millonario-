@@ -18,7 +18,6 @@ def establecer_matriz(matriz:list):
     
     for i in range(M):
         for j in range(N): 
-            print(matriz[i])
             if i == 0:
                 matriz[i][j] = 10000
             elif i == 1:
@@ -28,8 +27,6 @@ def establecer_matriz(matriz:list):
     
     return matriz
 
-print(establecer_matriz(matriz))
-
 def preguntas_progresivas(diccionario:dict, valor):
     for i in range(len(diccionario)):
         if valor == i:
@@ -38,5 +35,11 @@ def preguntas_progresivas(diccionario:dict, valor):
         
     return pregunta
 
-# valor = 1
-# pregunta = preguntas_progresivas(preguntas_respuestas["videojuegos"], valor)
+def sumar_matriz(matriz:list):
+    suma = 0
+    for i in range(M):
+        for j in range(N):
+            suma += matriz[i][j]
+                
+            
+    return suma

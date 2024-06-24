@@ -1,5 +1,5 @@
 import pygame
-from pregunta_class import *
+
 
 ## colores
 BLANCO = (255, 255, 255)
@@ -29,12 +29,3 @@ def dibujar_titulo(ventana, mensaje,tamaño_fuente ,color_texto, color_fondo, po
         menu_texto = get_font(tamaño_fuente).render(mensaje, True, color_texto, color_fondo)
         menu_recta = menu_texto.get_rect(center = (posicion[0], posicion[1]))
         ventana.blit(menu_texto,menu_recta)  
-
-def establecer_preguntas(lista_con_diccionario: list[dict]) -> list[Pregunta]:
-    preguntas = []
-    
-    for diccionario in lista_con_diccionario: 
-        pregunta = Pregunta(diccionario)
-        preguntas.append(pregunta)
-
-    return preguntas

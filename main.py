@@ -1,5 +1,9 @@
 import pygame, sys
 from package_input.button_class import Button
+from package_input.pregunta_class import Pregunta
+
+
+
 from package_input.Archivos.parser_json import imprimir_preguntas,parsear_json
 from package_input.Archivos.parser_csv import leer_archivos
 
@@ -11,10 +15,6 @@ path_preguntas ="package_input\Archivos\documentos\preguntas_respuestas.json"
 
 ## json
 preguntas_respuestas = parsear_json(path_preguntas)
-print("preguntas")
-imprimir_preguntas(preguntas_respuestas)# Ejecutar la función para imprimir las preguntas y respuestas
-videojuegos = establecer_preguntas(preguntas_respuestas["videojuegos"])
-componentes = establecer_preguntas(preguntas_respuestas["componentes_computadora"])
 
 ## csv
 # print("comodines")
@@ -50,12 +50,25 @@ background_jugar = pygame.image.load("imagenes\Background_jugar.jpg")
 background_jugar = pygame.transform.scale(background_jugar, (TAMAÑO_VENTANA))
 
 def video_juegos():
+    for pregunta_texto in preguntas_respuestas["videojuegos"]:
+        pregunta = Pregunta(pregunta_texto)
+        break
+    
+    # preguntas_random = preguntas_respuestas["videojuegos"][0]    
+    # pregunta = Pregunta(preguntas_random)
+    
+    
     while True:
-        # menu_mouse_posicion = pygame.mouse.get_pos()
+        mouse_posicion = pygame.mouse.get_pos()
         
         ventana.blit(background,(0,0)) 
         dibujar_titulo(ventana,"Estamos en video juegos", 30, BLANCO, None,(550,100))
-
+        
+        # muestra las preguntas en ventana
+        pregunta.mostrar_preguntas(ventana)
+        
+        
+       
         # EVENTOS
         lista_eventos = pygame.event.get()
         for evento in lista_eventos:
@@ -64,8 +77,10 @@ def video_juegos():
                 sys.exit()     
     
             elif evento.type == pygame.MOUSEBUTTONDOWN :
-                pass
-        
+                opcion_clickeada = pregunta.mouse_movimiento(mouse_posicion)
+                if opcion_clickeada :
+                    pregunta.es_correcta(opcion_clickeada)
+                    
         pygame.display.update()
         
 

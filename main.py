@@ -5,7 +5,7 @@ from funciones.pregunta_class import Pregunta
 from Archivos.parser_json import imprimir_preguntas,parsear_json
 from Archivos.parser_csv import leer_archivos
 
-from funciones.funciones import *
+from funciones.funciones import dibujar_titulo, get_font
 from funciones.preguntas_funciones import *
 
 pygame.init() # inicializado pygame
@@ -50,17 +50,38 @@ background_jugar = pygame.transform.scale(background_jugar, (TAMAÑO_VENTANA))
 
 
 def perdedor():
+    
     clock = pygame.time.Clock()
 
+    jugar_de_nuevo_si = Button(posicion=(450,400),texto_input="Si", font=get_font(20),base_color=BLANCO, hover_color=ROJO)
+    jugar_de_nuevo_no = Button(posicion=(600,400),texto_input="No", font=get_font(20),base_color=BLANCO, hover_color=ROJO)
+    
     while True:
+        mouse_posicion = pygame.mouse.get_pos()
         ventana.blit(background,(0,0)) 
         dibujar_titulo(ventana,"Perdiste!", 30, BLANCO, None,(550,100))
         
+        dibujar_titulo(ventana,"Quieres jugar de nuevo?", 30, BLANCO, None,(550,300))
+        # mostrar opciones
+        jugar_de_nuevo_si.draw(ventana)
+        jugar_de_nuevo_no.draw(ventana)
+        
         lista_eventos = pygame.event.get()
         for evento in lista_eventos:
-            if evento.type == pygame.QUIT: # pregunto si presiono la X de la ventana
+            if evento.type == pygame.QUIT : # pregunto si presiono la X de la ventana
                 pygame.quit()  
-                sys.exit()     
+                sys.exit()   
+            elif evento.type == pygame.MOUSEBUTTONDOWN:
+                if jugar_de_nuevo_si.mouse_movimiento(mouse_posicion):
+                    main_menu()  
+                if jugar_de_nuevo_no.mouse_movimiento(mouse_posicion):
+                    pygame.quit()  
+                    sys.exit()
+                        
+            elif evento.type == pygame.MOUSEMOTION:
+                jugar_de_nuevo_si.actualizar_color_texto(mouse_posicion)
+                jugar_de_nuevo_no.actualizar_color_texto(mouse_posicion)
+               
                 
         pygame.display.update()
         
@@ -74,6 +95,8 @@ def video_juegos():
     clock = pygame.time.Clock()
     
     tiempo_inicial = pygame.time.get_ticks()
+    
+    
     while True:
         pregunta = preguntas_progresivas(preguntas_respuestas["videojuegos"],valor)
         mouse_posicion = pygame.mouse.get_pos()
@@ -84,6 +107,7 @@ def video_juegos():
         # muestra las preguntas en ventana
         pregunta.mostrar_preguntas(ventana)
         
+
         # EVENTOS
         lista_eventos = pygame.event.get()
         for evento in lista_eventos:
@@ -99,17 +123,18 @@ def video_juegos():
                         valor += 1
                         ganancia = pregunta.determinar_ganancia(lista_ganancia, 10000,50000,273333)
                         print(ganancia)
-                    else : 
+                    else :  
                         perdedor()
                         
         tiempo_actual = pygame.time.get_ticks()
-        tiempo_transcurrido = tiempo_actual - tiempo_inicial
+        tiempo_transcurrido = round((tiempo_actual - tiempo_inicial) * 0.001)
         
         if tiempo_transcurrido == 30:
-            pygame.quit()  
-            sys.exit()   
-            
-        print(tiempo_transcurrido * 0.001)
+            perdedor()
+   
+        # mostrar contador
+        dibujar_titulo(ventana,str(tiempo_transcurrido),20,BLANCO, None,(70,100) )    
+       
         pygame.display.update()
         
         clock.tick(15)

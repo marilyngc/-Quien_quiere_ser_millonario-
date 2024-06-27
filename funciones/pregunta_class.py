@@ -24,16 +24,17 @@ class Pregunta:
             
     
     def mouse_movimiento(self, mouse_posicion):
+        retorno = None # Si no se clickeó ninguna opción, devuelve None
         self.posicion_y = 200
         for opcion in self.opciones:
             texto_renderizado = get_font(20).render(opcion, True, (255, 255, 255))
             texto_rect = texto_renderizado.get_rect(center=(self.posicion_x, self.posicion_y))
             
             if texto_rect.collidepoint(mouse_posicion):
-                return opcion # devuelve la opcion que clikeó
+                retorno = opcion # devuelve la opcion que clikeó
             self.posicion_y += 50   
                 
-        return None  # Si no se clickeó ninguna opción, devuelve None        
+        return retorno       
       
     def es_correcta(self,opcion) -> bool:
         retorno = False 
@@ -45,3 +46,13 @@ class Pregunta:
             
         return retorno
     
+    def determinar_ganancia(self, lista_ganancia:list[int], ganancia_facil:int, ganancia_media:int, ganancia_dificil:int) -> list:
+     
+        if self.dificultad == "facil":
+            lista_ganancia.append(ganancia_facil)
+        elif self.dificultad == "medio":
+            lista_ganancia.append(ganancia_media)
+        else:
+            lista_ganancia.append(ganancia_dificil)
+            
+        return lista_ganancia

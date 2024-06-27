@@ -48,7 +48,10 @@ background = pygame.transform.scale(background, (TAMAÑO_VENTANA))
 background_jugar = pygame.image.load("imagenes\Background_jugar.jpg")
 background_jugar = pygame.transform.scale(background_jugar, (TAMAÑO_VENTANA))
 
+
 def perdedor():
+    clock = pygame.time.Clock()
+
     while True:
         ventana.blit(background,(0,0)) 
         dibujar_titulo(ventana,"Perdiste!", 30, BLANCO, None,(550,100))
@@ -60,17 +63,17 @@ def perdedor():
                 sys.exit()     
                 
         pygame.display.update()
+        
+        clock.tick(15)
 
 def video_juegos():
-    # for pregunta_texto in preguntas_respuestas["videojuegos"]:
-    #     pregunta = Pregunta(pregunta_texto)
-    #     break
-    
-    # preguntas_random = preguntas_respuestas["videojuegos"][0]    
-    # pregunta = Pregunta(preguntas_random)
+    #TODO ESTO LUEGO EN UNA FUNCION
     valor = 0
-    ganancia = 0
+    lista_ganancia = []
+
+    clock = pygame.time.Clock()
     
+    tiempo_inicial = pygame.time.get_ticks()
     while True:
         pregunta = preguntas_progresivas(preguntas_respuestas["videojuegos"],valor)
         mouse_posicion = pygame.mouse.get_pos()
@@ -92,13 +95,27 @@ def video_juegos():
                 opcion_clickeada = pregunta.mouse_movimiento(mouse_posicion)
                 if opcion_clickeada :
                     if pregunta.es_correcta(opcion_clickeada):
+                        tiempo_inicial = pygame.time.get_ticks()
                         valor += 1
+                        ganancia = pregunta.determinar_ganancia(lista_ganancia, 10000,50000,273333)
+                        print(ganancia)
                     else : 
                         perdedor()
+                        
+        tiempo_actual = pygame.time.get_ticks()
+        tiempo_transcurrido = tiempo_actual - tiempo_inicial
+        
+        if tiempo_transcurrido == 30:
+            pygame.quit()  
+            sys.exit()   
+            
+        print(tiempo_transcurrido * 0.001)
         pygame.display.update()
         
+        clock.tick(15)
 
 def componentes():
+    clock = pygame.time.Clock()
     while True:
         # menu_mouse_posicion = pygame.mouse.get_pos()
         
@@ -116,8 +133,10 @@ def componentes():
                 pass
         
         pygame.display.update()
+        clock.tick(15)
         
 def jugar():
+    clock = pygame.time.Clock()
     #Los botones se crean fuera del bucle principal para evitar recrearlos en cada iteración.
     videojuegos_tema_boton = Button(posicion=(350,300), texto_input= "VIDEO JUEGOS", font=get_font(30), base_color=BLANCO, hover_color=ROJO) #setea los botones desde la clase button
     componentes_tema_boton = Button(posicion=(750,300), texto_input= "COMPONENTES", font=get_font(30), base_color=BLANCO, hover_color=ROJO)
@@ -155,6 +174,7 @@ def jugar():
         pygame.display.update()
 
 def main_menu():
+    clock = pygame.time.Clock()
     #Los botones se crean fuera del bucle principal para evitar recrearlos en cada iteración.
     jugar_boton = Button(posicion=(550,300), texto_input= "JUGAR", font=get_font(30), base_color=BLANCO, hover_color=ROJO)
     salir_boton = Button( posicion=(550,400), texto_input= "SALIR", font=get_font(30), base_color="#d7fcd4", hover_color=ROJO)
@@ -194,7 +214,7 @@ def main_menu():
 
 
         pygame.display.update()
-    
+        clock.tick(15)
     
 main_menu()          
         

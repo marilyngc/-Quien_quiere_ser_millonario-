@@ -96,6 +96,11 @@ def video_juegos():
     
     tiempo_inicial = pygame.time.get_ticks()
     
+    # comodines
+    comodin_publico = Button(posicion=(400,550),texto_input="Publico", font=get_font(20),base_color=BLANCO, hover_color=ROJO)
+    comodin_cincuenta = Button(posicion=(550,550),texto_input="50-50", font=get_font(20),base_color=BLANCO, hover_color=ROJO)
+    comodin_llamada = Button(posicion=(700,550),texto_input="Llamada", font=get_font(20),base_color=BLANCO, hover_color=ROJO)
+
     
     while True:
         pregunta = preguntas_progresivas(preguntas_respuestas["videojuegos"],valor)
@@ -107,6 +112,10 @@ def video_juegos():
         # muestra las preguntas en ventana
         pregunta.mostrar_preguntas(ventana)
         
+        # botones comodines
+        comodin_publico.draw(ventana)
+        comodin_cincuenta.draw(ventana)
+        comodin_llamada.draw(ventana)
 
         # EVENTOS
         lista_eventos = pygame.event.get()
@@ -125,6 +134,19 @@ def video_juegos():
                         print(ganancia)
                     else :  
                         perdedor()
+                if comodin_llamada.mouse_movimiento(mouse_posicion):
+                    pass
+                elif comodin_cincuenta.mouse_movimiento(mouse_posicion):
+                    pass
+                elif comodin_publico.mouse_movimiento(mouse_posicion):
+                    pass
+            elif evento.type == pygame.MOUSEMOTION:
+                comodin_publico.actualizar_color_texto(mouse_posicion)
+                comodin_cincuenta.actualizar_color_texto(mouse_posicion)
+                comodin_llamada.actualizar_color_texto(mouse_posicion)
+                   
+                    
+                   
                         
         tiempo_actual = pygame.time.get_ticks()
         tiempo_transcurrido = round((tiempo_actual - tiempo_inicial) * 0.001)

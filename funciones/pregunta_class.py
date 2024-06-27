@@ -12,7 +12,7 @@ class Pregunta:
         self.posicion_y = 200  # posicion inicial
   
       
-    def mostrar_preguntas(self,ventana):
+    def mostrar_preguntas(self,ventana): #PASAR A OTRA CLASE
         dibujar_titulo(ventana, self.pregunta, 10, BLANCO,None,(550,150))
                 # Reiniciar la posición Y para las opciones
         self.posicion_y = 200
@@ -23,7 +23,7 @@ class Pregunta:
             self.posicion_y += 50
             
     
-    def mouse_movimiento(self, mouse_posicion):
+    def mouse_movimiento(self, mouse_posicion): #PASAR A OTRA CLASE
         retorno = None # Si no se clickeó ninguna opción, devuelve None
         self.posicion_y = 200
         for opcion in self.opciones:
@@ -56,3 +56,13 @@ class Pregunta:
             lista_ganancia.append(ganancia_dificil)
             
         return lista_ganancia
+    
+    def eliminar_respuestas(self): #comodines
+        #mejorar
+        for opcion in self.opciones:
+            if self.es_correcta(opcion) == False: 
+                self.opciones.remove(opcion)
+
+        print(self.opciones)
+        
+        return self.opciones

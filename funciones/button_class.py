@@ -1,5 +1,5 @@
 import pygame
-class Button():
+class Button(): #mostrar 
     def __init__(self, posicion, texto_input, font, base_color, hover_color):
         self.posicion_x = posicion[0]
         self.posicion_y = posicion[1]

@@ -1,5 +1,5 @@
 import re
-def leer_archivos(path:str, lista):
+def leer_archivos(path:str):
     try:
         bandera_paso = False
         lista = [] #inicializo la lista

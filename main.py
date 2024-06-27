@@ -2,24 +2,23 @@ import pygame, sys
 from funciones.button_class import Button
 from funciones.pregunta_class import Pregunta
 
-from Archivos.parser_json import imprimir_preguntas,parsear_json
+from Archivos.parser_json import parsear_json
 from Archivos.parser_csv import leer_archivos
 
 from funciones.funciones import dibujar_titulo, get_font
 from funciones.preguntas_funciones import *
+from funciones.comodines import *
 
 pygame.init() # inicializado pygame
-path_comodines = "Archivos\documentos\comodines.csv"
+path_comodines = "Archivos\documentos\comodines2.csv"
 path_preguntas ="Archivos\documentos\preguntas_respuestas.json"
 
 ## json
 preguntas_respuestas = parsear_json(path_preguntas)
 
 ## csv
-# print("comodines")
-# lista_comodines = []
-# imprimir_comodines = leer_archivos(path_comodines,lista_comodines)
-# print(imprimir_comodines)
+pistas = leer_archivos(path_comodines)
+# print(pistas)
 
 ## colores
 BLANCO = (255, 255, 255)
@@ -91,16 +90,16 @@ def video_juegos():
     #TODO ESTO LUEGO EN UNA FUNCION
     valor = 0
     lista_ganancia = []
-
-    clock = pygame.time.Clock()
-    
-    tiempo_inicial = pygame.time.get_ticks()
     
     # comodines
     comodin_publico = Button(posicion=(400,550),texto_input="Publico", font=get_font(20),base_color=BLANCO, hover_color=ROJO)
     comodin_cincuenta = Button(posicion=(550,550),texto_input="50-50", font=get_font(20),base_color=BLANCO, hover_color=ROJO)
     comodin_llamada = Button(posicion=(700,550),texto_input="Llamada", font=get_font(20),base_color=BLANCO, hover_color=ROJO)
-
+    
+    lista_porcentaje = []
+    
+    clock = pygame.time.Clock()
+    tiempo_inicial = pygame.time.get_ticks()
     
     while True:
         pregunta = preguntas_progresivas(preguntas_respuestas["videojuegos"],valor)
@@ -112,11 +111,11 @@ def video_juegos():
         # muestra las preguntas en ventana
         pregunta.mostrar_preguntas(ventana)
         
-        # botones comodines
+        # botones comodines (Una unica funcion)
         comodin_publico.draw(ventana)
         comodin_cincuenta.draw(ventana)
         comodin_llamada.draw(ventana)
-
+        
         # EVENTOS
         lista_eventos = pygame.event.get()
         for evento in lista_eventos:
@@ -136,24 +135,30 @@ def video_juegos():
                         perdedor()
                 if comodin_llamada.mouse_movimiento(mouse_posicion):
                     pass
+                    # crear_pista(pregunta,pistas)
                 elif comodin_cincuenta.mouse_movimiento(mouse_posicion):
                     pass
+                    # pregunta.eliminar_respuestas()
                 elif comodin_publico.mouse_movimiento(mouse_posicion):
                     pass
+                    # porcentajes = crear_porcenajes(lista_porcentaje)
+                    # print(porcentajes)
+                    # mostrar_porcentajes(porcentajes, ventana, BLANCO, (30,550))
+                    
             elif evento.type == pygame.MOUSEMOTION:
                 comodin_publico.actualizar_color_texto(mouse_posicion)
                 comodin_cincuenta.actualizar_color_texto(mouse_posicion)
                 comodin_llamada.actualizar_color_texto(mouse_posicion)
-                   
-                    
-                   
                         
         tiempo_actual = pygame.time.get_ticks()
         tiempo_transcurrido = round((tiempo_actual - tiempo_inicial) * 0.001)
         
         if tiempo_transcurrido == 30:
             perdedor()
-   
+
+        if valor == len(preguntas_respuestas["videojuegos"]):
+            break
+        
         # mostrar contador
         dibujar_titulo(ventana,str(tiempo_transcurrido),20,BLANCO, None,(70,100) )    
        
@@ -161,7 +166,7 @@ def video_juegos():
         
         clock.tick(15)
 
-def componentes():
+def componentes(): #OPCIONAL
     clock = pygame.time.Clock()
     while True:
         # menu_mouse_posicion = pygame.mouse.get_pos()

@@ -44,7 +44,7 @@
       
     },
     {
-      "pregunta": "¿Qué dispositivos se usan comúnmente para jugar Osu!?",
+      "pregunta": "¿Qué dispositivos se usan comúnmente para jugar Osu?",
       "correcta": "Tableta gráfica y ratón",
       "opciones": ["Teclado y monitor", "Joystick y pantalla táctil", "Gamepad y auriculares","Tableta gráfica y ratón"],
       "dificultad": "dificil"

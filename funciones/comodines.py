@@ -30,10 +30,10 @@ def mostrar_porcentajes(lista_porcentajes:list, ventana, color_texto, coordenada
         coordenada_x +=50 
         print(lista_porcentajes[i])
 
-def crear_pista(diccionario_pregunta, lista_pista): 
+# def crear_pista(diccionario_pregunta, lista_pista): 
     
-    for diccionario in lista_pista:
-        if diccionario_pregunta["pregunta"] == lista_pista["pregunta"]:
-            print(lista_pista["pista"])
+#     for diccionario in lista_pista:
+#         if diccionario_pregunta["pregunta"] == lista_pista["pregunta"]:
+#             print(lista_pista["pista"])
     
 

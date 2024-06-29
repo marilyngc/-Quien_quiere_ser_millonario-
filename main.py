@@ -5,7 +5,7 @@ from funciones.pregunta_class import Pregunta
 from Archivos.parser_json import parsear_json
 from Archivos.parser_csv import leer_archivos
 
-from funciones.funciones import dibujar_titulo, get_font
+from funciones.funciones import dibujar_titulo, get_font,verificar_ingreso_datos
 from funciones.preguntas_funciones import *
 from funciones.comodines import *
 
@@ -17,7 +17,7 @@ path_preguntas ="Archivos\documentos\preguntas_respuestas.json"
 preguntas_respuestas = parsear_json(path_preguntas)
 
 ## csv
-pistas = leer_archivos(path_comodines)
+lista_pistas = leer_archivos(path_comodines)
 # print(pistas)
 
 ## colores
@@ -96,6 +96,10 @@ def video_juegos():
     comodin_cincuenta = Button(posicion=(550,550),texto_input="50-50", font=get_font(20),base_color=BLANCO, hover_color=ROJO)
     comodin_llamada = Button(posicion=(700,550),texto_input="Llamada", font=get_font(20),base_color=BLANCO, hover_color=ROJO)
     
+    bandera_cincuenta = True
+    bandera_llamada = True
+    bandera_publico = True
+    
     lista_porcentaje = []
     
     clock = pygame.time.Clock()
@@ -133,13 +137,15 @@ def video_juegos():
                         print(ganancia)
                     else :  
                         perdedor()
-                if comodin_llamada.mouse_movimiento(mouse_posicion):
-                    pass
-                    # crear_pista(pregunta,pistas)
-                elif comodin_cincuenta.mouse_movimiento(mouse_posicion):
-                    pass
-                    # pregunta.eliminar_respuestas()
-                elif comodin_publico.mouse_movimiento(mouse_posicion):
+                if comodin_llamada.mouse_movimiento(mouse_posicion) and verificar_ingreso_datos(bandera_llamada):
+                    opciones_eliminadas = pregunta.crear_pista(lista_pistas)
+                    bandera_llamada = False
+                elif comodin_cincuenta.mouse_movimiento(mouse_posicion) and verificar_ingreso_datos(bandera_cincuenta):
+                    bandera_cincuenta = False
+                    opciones_eliminadas = pregunta.eliminar_dos_respuestas() #ver como recuperar aquellas eliminadas
+                    
+                elif comodin_publico.mouse_movimiento(mouse_posicion) and verificar_ingreso_datos(bandera_publico):
+                    bandera_publico = False
                     pass
                     # porcentajes = crear_porcenajes(lista_porcentaje)
                     # print(porcentajes)

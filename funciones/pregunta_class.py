@@ -5,6 +5,7 @@ BLANCO = (255, 255, 255)
 class Pregunta: 
     def __init__(self, diccionario: dict) -> None:
         self.pregunta = diccionario["pregunta"]
+        self.opciones_originales = diccionario["opciones"]
         self.opciones = diccionario["opciones"]
         self.correcta = diccionario["correcta"]
         self.dificultad = diccionario["dificultad"]
@@ -57,12 +58,23 @@ class Pregunta:
             
         return lista_ganancia
     
-    def eliminar_respuestas(self): #comodines
-        #mejorar
-        for opcion in self.opciones:
-            if self.es_correcta(opcion) == False: 
-                self.opciones.remove(opcion)
-
-        print(self.opciones)
+    def eliminar_dos_respuestas(self): #comodines
+        #mejore
+        i = 0
+        contador = 0
+        opciones_eliminadas = []
+        #utilizo un while porque si elimino dentro de un for se rompe
+        while i < len(self.opciones): # el valor "i" es el que se va a ir aumentando en cada iteracion
+            if self.es_correcta(self.opciones[i]) == False and contador < 2:
+                opciones_eliminadas.append(self.opciones.pop(i))
+                contador += 1
+                
+            i +=1
         
-        return self.opciones
+        return opciones_eliminadas
+    
+    def crear_pista(self, lista_pista):
+        
+        for diccionario in lista_pista:
+            if self.pregunta == diccionario["pregunta"]:
+                print(diccionario["pista"])

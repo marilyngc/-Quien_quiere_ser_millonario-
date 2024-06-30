@@ -2,41 +2,85 @@ from .funciones import dibujar_titulo, get_font
 
 BLANCO = (255, 255, 255)
 
+
+# metodos que pertenecen a la instancia, es decir al objeto mismo
+#para usarlo es atraves del objeto 
+# metodos de instancia 
+
 class Pregunta: 
-    def __init__(self, diccionario: dict) -> None:
-        self.pregunta = diccionario["pregunta"]
+    # metodo
+    # por defecto python busca el iniciador 
+    # init es un constructor
+    def __init__(self, diccionario: dict) -> None: # este metodo inicial se llama a llamar sin que lo lllame
+        # variables de instancia
+        self.pregunta = diccionario["pregunta"] # -> atributos - son las que tienen un objeto
         self.opciones_originales = diccionario["opciones"]
         self.opciones = diccionario["opciones"]
         self.correcta = diccionario["correcta"]
         self.dificultad = diccionario["dificultad"]
-        self.posicion_x = 550
+        self.posicion_x = 450
         self.posicion_y = 200  # posicion inicial
   
-      
+    # metodo de instancia, se encuentra dentro de la clase Pregunta y le pertenece a la instancia 
+    # este metodo se caracteriza por poseer obligatoriamente un parametro  que haga referencia al objeto mismo
+    
+    # SELF no es una palabra reservada, es un parametro que representa a la instancia
+    # SELF hace referencia al objeto , osea se llama asi mismo
+    #SELF equivale al nombre del objeto actual que estamos trabajando
+    # con el SELF entro a la instancia
+    # con metodos de instancia es posible: crear, modificar, eliminar, leer atributos del objeto. se puede llamar otros metodos de instancia dentro de ellos
     def mostrar_preguntas(self,ventana): #PASAR A OTRA CLASE
         dibujar_titulo(ventana, self.pregunta, 10, BLANCO,None,(550,150))
-                # Reiniciar la posición Y para las opciones
-        self.posicion_y = 200
-        # recorre las opciones
-        for opciones in self.opciones:
-            dibujar_titulo(ventana, opciones, 13, BLANCO, None,(self.posicion_x, self.posicion_y))
+        # Reiniciar la posición Y para las opciones
 
-            self.posicion_y += 50
-            
-    
-    def mouse_movimiento(self, mouse_posicion): #PASAR A OTRA CLASE
-        retorno = None # Si no se clickeó ninguna opción, devuelve None
+    # Reiniciar la posición Y para las opciones
         self.posicion_y = 200
+        self.posicion_x = 350
+
+        contador = 0
+
+        # Recorrer las opciones
         for opcion in self.opciones:
-            texto_renderizado = get_font(20).render(opcion, True, (255, 255, 255))
-            texto_rect = texto_renderizado.get_rect(center=(self.posicion_x, self.posicion_y))
-            
-            if texto_rect.collidepoint(mouse_posicion):
-                retorno = opcion # devuelve la opcion que clikeó
-            self.posicion_y += 50   
-                
-        return retorno       
-      
+            if contador < 2:
+                dibujar_titulo(ventana, opcion, 10, BLANCO, None, (self.posicion_x, self.posicion_y))
+                self.posicion_y += 100
+            else:
+                # Cambiar a la segunda columna
+                self.posicion_x += 300
+                self.posicion_y = 200  # Resetear Y para la nueva columna
+                dibujar_titulo(ventana, opcion, 10, BLANCO, None, (self.posicion_x, self.posicion_y))
+                self.posicion_y += 100
+                contador = 0
+            contador += 1
+
+    def mouse_movimiento(self, mouse_posicion):  # PASAR A OTRA CLASE
+        retorno = None  # Si no se clickeó ninguna opción, devuelve None
+        self.posicion_y = 200
+        self.posicion_x = 350
+    
+        contador = 0
+    
+        for opcion in self.opciones:
+            if contador < 2:
+                texto_renderizado = get_font(20).render(opcion, True, (255, 255, 255))
+                texto_rect = texto_renderizado.get_rect(center=(self.posicion_x, self.posicion_y))
+                if texto_rect.collidepoint(mouse_posicion):
+                    retorno = opcion  # devuelve la opcion que clikeó
+                self.posicion_y += 100
+            else:
+                # Cambiar a la segunda columna
+                self.posicion_x += 300
+                self.posicion_y = 200  # Resetear Y para la nueva columna
+                texto_renderizado = get_font(20).render(opcion, True, (255, 255, 255))
+                texto_rect = texto_renderizado.get_rect(center=(self.posicion_x, self.posicion_y))
+                if texto_rect.collidepoint(mouse_posicion):
+                    retorno = opcion  # devuelve la opcion que clikeó
+                self.posicion_y += 100
+                contador = 0
+            contador += 1
+    
+        return retorno
+
     def es_correcta(self,opcion) -> bool:
         retorno = False 
         if opcion == self.correcta:
@@ -78,3 +122,7 @@ class Pregunta:
         for diccionario in lista_pista:
             if self.pregunta == diccionario["pregunta"]:
                 print(diccionario["pista"])
+                
+                
+# al llamor la clase, creamos una instancia
+# pregunta = Pregunta()

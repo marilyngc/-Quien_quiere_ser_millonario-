@@ -9,27 +9,33 @@ AZUL = (0, 0, 255)
 VERDE = (0, 255, 0)
 AZUL_CLARO = (0, 150, 255)
 
+
+
 tiempo_total = 30
 # crear fuente
 def get_font(tamaño):
     return pygame.font.Font("font\Font.ttf",tamaño) # definir la configuracion de la fuente
 
-# Función para actualizar el temporizador usando Clock
-# def mostrar_temporizador(ventana):
-#     clock = pygame.time.Clock()  # Crear un objeto Clock
-#     for segundos in range(30):
-        
-#         texto_puntos = Button(posicion=(550,300), texto_input= f"{segundos}", font=get_font(30), base_color=BLANCO, hover_color=ROJO)
-#         texto_puntos.draw(ventana)
-#         pygame.display.flip()
-#         clock.tick(1)
 
+def dibujar_imagen(ventana,image_url,posicion):
+    menu_imagen = pygame.image.load(image_url)
+    menu_recta = menu_imagen.get_rect(center= (posicion[0], posicion[1]))
+    ventana.blit(menu_imagen,menu_recta)
+
+def renderizar_texto(self,texto):
+    #creo el tipo de texto
+    texto_renderizado = get_font(self.tamaño_fuente).render(texto, True, self.color_texto)
+    # Rectangulo de cada texto
+    return  texto_renderizado.get_rect(center=(self.posicion_x_inicial, self.posicion_y))
+    
 # dibuja texto
 def dibujar_titulo(ventana, mensaje,tamaño_fuente ,color_texto, color_fondo, posicion): 
         menu_texto = get_font(tamaño_fuente).render(mensaje, True, color_texto, color_fondo)
         menu_recta = menu_texto.get_rect(center = (posicion[0], posicion[1]))
         ventana.blit(menu_texto,menu_recta)  
 
+
+    
 def verificar_ingreso_datos(bandera:bool) -> bool: 
     """Verificar el ingreso de los datos
 

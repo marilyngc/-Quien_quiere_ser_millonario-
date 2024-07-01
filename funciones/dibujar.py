@@ -86,3 +86,26 @@ def mostrar_preguntas(ventana,pregunta,posicion,lista_opcion, color_texto): #PAS
             posicion_y += 100
             contador = 0
         contador += 1
+        
+def mostrar_porcentajes(lista_porcentajes:list, ventana, color_texto, coordenadas):
+    coordenada_x = coordenadas[0]
+    coordenada_y = coordenadas[1]
+    for i in range(len(lista_porcentajes)): #IMAGEN DINAMICA
+        porcentaje = f"{lista_porcentajes[i]}"
+        dibujar_titulo(ventana, str(porcentaje),20, color_texto,None, (coordenada_x, coordenada_y))
+        coordenada_x +=50 
+        print(lista_porcentajes[i])
+
+def mostrar_ganancias(matriz_ganancias:list, ventana):
+    
+    posicion_x = 1000
+    posicion_y = 100
+    
+    for i in range(len(matriz_ganancias) -1, -1, -1): 
+            for j in range(len(matriz_ganancias[i])):
+                dibujar_titulo(ventana,f"${matriz_ganancias[i][j]:3}", 20, (255,255,255), (0,0,0), (posicion_x, posicion_y))   
+                posicion_y += 50
+                
+def mostrar_ultima_ganancia(ganancia:int, ventana, posicion): 
+    
+    dibujar_titulo(ventana, str(ganancia), 20, (255,255,255), None, posicion)

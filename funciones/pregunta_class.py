@@ -1,5 +1,5 @@
 from .funciones import dibujar_titulo, get_font
-
+import random
 BLANCO = (255, 255, 255)
 
 
@@ -14,13 +14,13 @@ class Pregunta:
     def __init__(self, diccionario: dict) -> None: # este metodo inicial se llama a llamar sin que lo lllame
         # variables de instancia
         self.pregunta = diccionario["pregunta"] # -> atributos - son las que tienen un objeto
-        self.opciones_originales = diccionario["opciones"]
         self.opciones = diccionario["opciones"]
         self.correcta = diccionario["correcta"]
         self.dificultad = diccionario["dificultad"]
         self.posicion_x = 450
         self.posicion_y = 200  # posicion inicial
-  
+    
+      
     # metodo de instancia, se encuentra dentro de la clase Pregunta y le pertenece a la instancia 
     # este metodo se caracteriza por poseer obligatoriamente un parametro  que haga referencia al objeto mismo
     
@@ -29,7 +29,9 @@ class Pregunta:
     #SELF equivale al nombre del objeto actual que estamos trabajando
     # con el SELF entro a la instancia
     # con metodos de instancia es posible: crear, modificar, eliminar, leer atributos del objeto. se puede llamar otros metodos de instancia dentro de ellos
+    
     def mostrar_preguntas(self,ventana): #PASAR A OTRA CLASE
+        
         dibujar_titulo(ventana, self.pregunta, 10, BLANCO,None,(550,150))
         # Reiniciar la posición Y para las opciones
 
@@ -91,16 +93,19 @@ class Pregunta:
             
         return retorno
     
-    def determinar_ganancia(self, lista_ganancia:list[int], ganancia_facil:int, ganancia_media:int, ganancia_dificil:int) -> list:
-     
+    def determinar_ganancia(self, matriz_ganancias:list[int], ganancia_facil:int, ganancia_media:int, ganancia_dificil:int, numero_pregunta:int, ultima_ganancia:int) -> list:
+        
         if self.dificultad == "facil":
-            lista_ganancia.append(ganancia_facil)
+            ganancia = ganancia_facil 
         elif self.dificultad == "medio":
-            lista_ganancia.append(ganancia_media)
+            ganancia = ganancia_media
         else:
-            lista_ganancia.append(ganancia_dificil)
+            ganancia = ganancia_dificil
             
-        return lista_ganancia
+    
+        matriz_ganancias[numero_pregunta][0] = ultima_ganancia + ganancia
+        
+        return matriz_ganancias
     
     def eliminar_dos_respuestas(self): #comodines
         #mejore
@@ -122,7 +127,14 @@ class Pregunta:
         for diccionario in lista_pista:
             if self.pregunta == diccionario["pregunta"]:
                 print(diccionario["pista"])
-                
-                
+    
+    def crear_porcenajes(self,lista_porcentaje:list) -> list: 
+
+        for i in range(4):
+            porcentaje = random.randint(0,100)
+            lista_porcentaje.append(porcentaje)
+
+        return lista_porcentaje
+    
 # al llamor la clase, creamos una instancia
 # pregunta = Pregunta()

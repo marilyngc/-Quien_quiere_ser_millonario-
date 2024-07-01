@@ -1,9 +1,9 @@
 import pygame
 import sys
-from funciones.funciones import verificar_ingreso_datos
-from funciones.comodines import crear_porcenajes, mostrar_porcentajes
+from package_input.inputs import verificar_ingreso_datos
+from funciones.dibujar import mostrar_porcentajes
 
-def evento(boton,botones_validos, ventana, mouse_posicion):
+def evento(boton,botones_validos, ventana, mouse_posicion): #vervo en infinitivo
     retorno = None
     boton_clikeado = boton.mouse_movimiento(mouse_posicion)
     for evento in pygame.event.get():
@@ -23,7 +23,7 @@ def evento(boton,botones_validos, ventana, mouse_posicion):
 
 BLANCO = (255, 255, 255)
 
-def evento_comodines(comodin_clickeado, pregunta, ventana, lista_pistas, lista_banderas):
+def evento_comodines(comodin_clickeado, pregunta, ventana, lista_pistas, lista_banderas): #verbo en infinitivo
     lista_porcentaje = []
     if comodin_clickeado == "Llamada" and verificar_ingreso_datos(lista_banderas[0]):
         pregunta.crear_pista(lista_pistas)
@@ -34,13 +34,11 @@ def evento_comodines(comodin_clickeado, pregunta, ventana, lista_pistas, lista_b
       
     elif comodin_clickeado == "Publico" and verificar_ingreso_datos(lista_banderas[2]):
         lista_banderas[2] = False
-        
-        porcentajes = crear_porcenajes(lista_porcentaje)
-        # print(porcentajes)
+        porcentajes = pregunta.crear_porcenajes(lista_porcentaje)
         mostrar_porcentajes(porcentajes, ventana, BLANCO, (30,550))
                 
 
-def evento_video_juegos(pregunta, comodin, lista_ganancia, mouse_posicion, ventana, lista_pistas,lista_banderas):
+def evento_video_juegos(pregunta, comodin, matriz_ganancia, mouse_posicion, ventana, lista_pistas,lista_banderas, valor, ultima_ganancia): #verbo en infinitivo
     lista_eventos = pygame.event.get()
     opcion_correcta = False
     for evento in lista_eventos:
@@ -56,8 +54,7 @@ def evento_video_juegos(pregunta, comodin, lista_ganancia, mouse_posicion, venta
                 
                 if pregunta.es_correcta(opcion_clickeada):
                     opcion_correcta = "correcta"
-                    ganancia = pregunta.determinar_ganancia(lista_ganancia, 10000,50000,273333)
-                    print(ganancia)
+                    pregunta.determinar_ganancia(matriz_ganancia, 10000,50000,273333, valor, ultima_ganancia)
                 else :  
                     opcion_correcta = "incorrecta"
             

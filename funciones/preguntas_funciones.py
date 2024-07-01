@@ -9,10 +9,7 @@ from .pregunta_class import *
 #     print(preguntas)
 #     return preguntas
 
-N = 3
-M = 3
 
-matriz = [[0]*N for _ in range(M)]
 
 def preguntas_progresivas(diccionario:dict, valor):
     pregunta = None
@@ -24,24 +21,16 @@ def preguntas_progresivas(diccionario:dict, valor):
         
     return pregunta
 
-# def establecer_matriz(matriz:list): # seria mejor leer por cada facil, media y dificil
-    
-#     for i in range(M):
-#         for j in range(N): 
-#             if i == 0:
-#                 matriz[i][j] = 10000
-#             elif i == 1:
-#                 matriz[i][j] = 50000
-#             else:
-#                 matriz[i][j] = 273333
-    
-#     return matriz
+
+# sumar_matriz = lambda matriz: sum(sum(fila) for fila in matriz)
 
 def sumar_matriz(matriz:list): # establezco los valores ganados
-    suma = 0
-    for i in range(M):
-        for j in range(N):
-            suma += matriz[i][j]
+    ultimo_valor = 0
+    
+    for i in range(len(matriz)):
+        for j in range(len(matriz[i])):
+            if matriz[i][j] != 0:
+                ultimo_valor = matriz[i][j]
                 
             
-    return suma
+    return ultimo_valor

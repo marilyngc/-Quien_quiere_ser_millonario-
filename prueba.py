@@ -5,46 +5,100 @@ from funciones.comodines import *
 path_preguntas ="Archivos\documentos\preguntas_respuestas.json"
 preguntas_respuestas = parsear_json(path_preguntas)
 
-# def establecer_preguntas(lista_con_diccionario: list[dict]) -> list[Pregunta]:
-#     preguntas = []
+videojuegos = [ {
+    "pregunta": "¿Cuál es el nombre del personaje principal que el jugador puede elegir al inicio del juego en Genshin Impact?",
+    "correcta": "El Viajero (Aether o Lumine)",
+    "opciones": ["Diluc", "Mona", "Kaeya","El Viajero (Aether o Lumine)"],
+    "dificultad": "facil"
+},
+{
+    "pregunta": "¿Cuántos personajes principales se pueden controlar en GTA V?",
+    "correcta": "Tres",
+    "opciones": ["Uno", "Cuatro", "Cinco","Tres"],
+    "dificultad": "facil"
+},
+{
+    "pregunta": "¿Cuál es el nombre del modo de juego en Fortnite donde los jugadores compiten para ser el último en pie?",
+    "correcta": "Battle Royale",
+    "opciones": ["Save the World", "Creative Mode", "Arena Mode","Battle Royale"],
+    "dificultad": "facil"
+},
+{
+    "pregunta": "¿Cuál es el nombre de la región inspirada en China dentro del juego Genshin Impact?",
+    "correcta": "Liyue",
+    "opciones": ["Mondstadt", "Inazuma", "Sumeru","Liyue"],
+    "dificultad": "medio"
+},
+{
+    "pregunta": "¿Cuál es el nombre del banco que Michael y Trevor roban al inicio de la historia en GTA V?",
+    "correcta": "Banco de Ludendorff",
+    "opciones": ["Fleeca Bank", "Pacific Standard Public Deposit Bank", "Union Depository","Banco de Ludendorff"],
+    "dificultad": "medio"
+},
+{
+    "pregunta": "¿Qué temporada introdujo el evento de colaboración con Marvel que incluía a personajes como Iron Man y Thor en Fortnite?",
+    "correcta": "Temporada 4, Capítulo 2",
+    "opciones": ["Temporada 5, Capítulo 2", "Temporada 3, Capítulo 1", "Temporada 2, Capítulo 2", "Temporada 4, Capítulo 2"],
+    "dificultad": "medio"
+},
+{
+    "pregunta": "¿Qué material necesitas para construir un portal al Nether en Minecraft?",
+    "correcta": "Obsidiana",
+    "opciones": ["Diamante", "Piedra", "Arena","Obsidiana"],
+    "dificultad": "dificil"
     
-#     for diccionario in lista_con_diccionario: 
-#         pregunta = Pregunta(diccionario)
-#         preguntas.append(pregunta)
+},
+{
+    "pregunta": "¿Qué dispositivos se usan comúnmente para jugar Osu?",
+    "correcta": "Tableta gráfica y ratón",
+    "opciones": ["Teclado y monitor", "Joystick y pantalla táctil", "Gamepad y auriculares","Tableta gráfica y ratón"],
+    "dificultad": "dificil"
+},
+{
+    "pregunta": "¿Qué mod en Osu! aumenta la velocidad de la canción y las notas?",
+    "correcta": "Double Time (DT)",
+    "opciones": ["Hard Rock (HR)", "Hidden (HD)", "Flashlight (FL)","Double Time (DT)"],
+    "dificultad": "dificil"
+}
+  ] 
 
-#     return preguntas
+def establecer_matriz(videojuegos):
+    N = 2
+    M = 9
+
+    matriz = [[0]*N for _ in range(M)]
     
-# videojuegos = establecer_preguntas(preguntas_respuestas["videojuegos"])
-# componentes = establecer_preguntas(preguntas_respuestas["componentes_computadora"])
+    print(matriz)
+    ganancia_facil = 1
+    ganancia_media = 2
+    ganancia_dificil = 3
+    
+    for diccionario in videojuegos:
+        for i in range(M): 
+            for j in range(N):
+                if diccionario["dificultad"] == "facil":
+                    matriz[i][0] = diccionario["dificultad"]
+                    matriz[i][1] = ganancia_facil
+                    
 
-# respuesta = "ROM (Memoria de Solo Lectura)"
+    return matriz
+matriz = establecer_matriz(videojuegos)
 
-# retorno = Pregunta.es_correcta(componentes,respuesta)
-# print(retorno)
+def mostrar_matriz(matriz:list) -> list: 
+    """Mostrar una matriz
 
-#GUARDAMOS LOS VALORES EN UNA MATRIZ
+    Args:
+        matriz (list): matriz proporcionada
 
-# def preguntas_progresivas(diccionario:dict, valor):
-#     for i in range(len(diccionario)):
-#         if valor == i:
-#             pregunta = Pregunta(diccionario[i])
-#             break
+    Returns:
+        list: muestra la matriz proporcionada
+    """
+    M = len(matriz)
+    N = len(matriz[0])
+
+    for i in range(M): 
+        for j in range(N):   
+            print(f"{matriz[i][j]:3}", end = " ")
+        print("")
         
-#     return pregunta
-
-# valor = 1
-# pregunta = preguntas_progresivas(preguntas_respuestas["videojuegos"], valor)
-# print(pregunta)
-
-# N = 3
-# M = 3
-
-# matriz = [[0]*N for _ in range(M)]
-
-# matriz_con_valores = establecer_matriz(matriz)
-# print(matriz_con_valores)
-
-# ganacia = sumar_matriz(matriz_con_valores)
-# print(ganacia)
-
-# eliminar_opciones(preguntas_respuestas["videojuegos"])
+mostrar_matriz(matriz)

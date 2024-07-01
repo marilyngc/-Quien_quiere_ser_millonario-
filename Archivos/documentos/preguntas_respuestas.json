@@ -3,13 +3,13 @@
     {
       "pregunta": "¿Cuál es el nombre del personaje principal que el jugador puede elegir al inicio del juego en Genshin Impact?",
       "correcta": "El Viajero (Aether o Lumine)",
-      "opciones": ["Diluc", "Mona", "Kaeya","El Viajero (Aether o Lumine)"],
+      "opciones": ["Diluc", "Mona","El Viajero (Aether o Lumine)", "Kaeya"],
       "dificultad": "facil"
     },
     {
       "pregunta": "¿Cuántos personajes principales se pueden controlar en GTA V?",
       "correcta": "Tres",
-      "opciones": ["Uno", "Cuatro", "Cinco","Tres"],
+      "opciones": ["Tres","Uno", "Cuatro", "Cinco"],
       "dificultad": "facil"
     },
     {
@@ -21,7 +21,7 @@
     {
       "pregunta": "¿Cuál es el nombre de la región inspirada en China dentro del juego Genshin Impact?",
       "correcta": "Liyue",
-      "opciones": ["Mondstadt", "Inazuma", "Sumeru","Liyue"],
+      "opciones": ["Mondstadt","Liyue", "Inazuma", "Sumeru"],
       "dificultad": "medio"
     },
     {
@@ -33,13 +33,13 @@
     {
       "pregunta": "¿Qué temporada introdujo el evento de colaboración con Marvel que incluía a personajes como Iron Man y Thor en Fortnite?",
       "correcta": "Temporada 4, Capítulo 2",
-      "opciones": ["Temporada 5, Capítulo 2", "Temporada 3, Capítulo 1", "Temporada 2, Capítulo 2", "Temporada 4, Capítulo 2"],
+      "opciones": ["Temporada 4, Capítulo 2","Temporada 5, Capítulo 2", "Temporada 2, Capítulo 2", "Temporada 3, Capítulo 1"],
       "dificultad": "medio"
     },
     {
       "pregunta": "¿Qué material necesitas para construir un portal al Nether en Minecraft?",
       "correcta": "Obsidiana",
-      "opciones": ["Diamante", "Piedra", "Arena","Obsidiana"],
+      "opciones": ["Diamante", "Obsidiana","Piedra", "Arena"],
       "dificultad": "dificil"
       
     },
@@ -52,7 +52,7 @@
     {
       "pregunta": "¿Qué mod en Osu! aumenta la velocidad de la canción y las notas?",
       "correcta": "Double Time (DT)",
-      "opciones": ["Hard Rock (HR)", "Hidden (HD)", "Flashlight (FL)","Double Time (DT)"],
+      "opciones": ["Hard Rock (HR)","Double Time (DT)", "Hidden (HD)", "Flashlight (FL)"],
       "dificultad": "dificil"
     }
   ],

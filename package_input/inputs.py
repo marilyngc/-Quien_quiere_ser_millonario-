@@ -14,3 +14,5 @@ def verificar_ingreso_datos(bandera:bool) -> bool:
         retorno = False
     
     return retorno
+
+

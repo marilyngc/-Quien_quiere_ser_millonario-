@@ -23,7 +23,7 @@ class Button(): #mostrar
                   
                 dibujar_titulo(ventana, texto, self.tamaño_fuente, self.color_texto, self.color_fondo, (self.posicion_x_inicial, self.posicion_y))
 
-                self.posicion_y += 100
+                self.posicion_y += 150
         # dibuja de manera horizontal       
         elif self.orientacion == "Horizontal":  
             # Reiniciar la posición Y para las opciones
@@ -34,7 +34,7 @@ class Button(): #mostrar
                     
                 dibujar_titulo(ventana, texto, self.tamaño_fuente, self.color_texto, self.color_fondo, (self.posicion_x, self.posicion_y_inicial))
 
-                self.posicion_x += 150                  
+                self.posicion_x += 200                
             
     
     def mouse_movimiento(self, mouse_posicion):
@@ -51,7 +51,7 @@ class Button(): #mostrar
 
                 if texto_recta.collidepoint(mouse_posicion):
                     retorno = texto 
-                self.posicion_y += 100   
+                self.posicion_y += 150   
         
         elif self.orientacion == "Horizontal":   
             self.posicion_x = self.posicion_x_inicial
@@ -64,7 +64,7 @@ class Button(): #mostrar
 
                 if texto_recta.collidepoint(mouse_posicion):
                     retorno = texto 
-                self.posicion_x += 150        
+                self.posicion_x += 200       
         return retorno           
     
     def actualizar_color_texto(self,boton,ventana):
@@ -75,7 +75,7 @@ class Button(): #mostrar
             for texto in self.texto_input:
                 if boton == texto:
                     dibujar_titulo(ventana, texto, self.tamaño_fuente, self.hover_color, self.color_fondo, (self.posicion_x_inicial, self.posicion_y))
-                self.posicion_y += 100
+                self.posicion_y += 150
                 
          # dibuja de manera Horizontal
         elif self.orientacion == "Horizontal":    
@@ -84,7 +84,7 @@ class Button(): #mostrar
             for texto in self.texto_input:
                 if boton == texto:
                     dibujar_titulo(ventana, texto, self.tamaño_fuente, self.hover_color, self.color_fondo, (self.posicion_x, self.posicion_y_inicial))
-                self.posicion_x += 150    
+                self.posicion_x += 200   
                 
         
         

@@ -17,9 +17,8 @@ class Pregunta:
         self.opciones = diccionario["opciones"]
         self.correcta = diccionario["correcta"]
         self.dificultad = diccionario["dificultad"]
-        self.posicion_x = 450
-        self.posicion_y = 200  # posicion inicial
-    
+        self.posicion_x_inicial = 400
+        self.posicion_y_inicial = 550  # posicion inicial
       
     # metodo de instancia, se encuentra dentro de la clase Pregunta y le pertenece a la instancia 
     # este metodo se caracteriza por poseer obligatoriamente un parametro  que haga referencia al objeto mismo
@@ -31,53 +30,52 @@ class Pregunta:
     # con metodos de instancia es posible: crear, modificar, eliminar, leer atributos del objeto. se puede llamar otros metodos de instancia dentro de ellos
     
     def mostrar_preguntas(self,ventana): #PASAR A OTRA CLASE
-        
-        dibujar_titulo(ventana, self.pregunta, 10, BLANCO,None,(550,150))
+        dibujar_titulo(ventana, self.pregunta, 10, BLANCO,None,(600,430))
+
         # Reiniciar la posición Y para las opciones
 
-    # Reiniciar la posición Y para las opciones
-        self.posicion_y = 200
-        self.posicion_x = 350
-
+        # Reiniciar la posición Y para las opciones
+        posicion_y = self.posicion_y_inicial
+        posicion_x = self.posicion_x_inicial
         contador = 0
 
         # Recorrer las opciones
         for opcion in self.opciones:
             if contador < 2:
-                dibujar_titulo(ventana, opcion, 10, BLANCO, None, (self.posicion_x, self.posicion_y))
-                self.posicion_y += 100
+                dibujar_titulo(ventana, opcion, 15, BLANCO, None, (posicion_x, posicion_y))
+                posicion_y += 80
             else:
                 # Cambiar a la segunda columna
-                self.posicion_x += 300
-                self.posicion_y = 200  # Resetear Y para la nueva columna
-                dibujar_titulo(ventana, opcion, 10, BLANCO, None, (self.posicion_x, self.posicion_y))
-                self.posicion_y += 100
+                posicion_x += 400
+                posicion_y = self.posicion_y_inicial  # Resetear Y para la nueva columna
+                dibujar_titulo(ventana, opcion, 15, BLANCO, None, (posicion_x, posicion_y))
+                posicion_y += 80
                 contador = 0
             contador += 1
 
     def mouse_movimiento(self, mouse_posicion):  # PASAR A OTRA CLASE
         retorno = None  # Si no se clickeó ninguna opción, devuelve None
-        self.posicion_y = 200
-        self.posicion_x = 350
+        posicion_y = self.posicion_y_inicial
+        posicion_x = self.posicion_x_inicial
     
         contador = 0
     
         for opcion in self.opciones:
             if contador < 2:
                 texto_renderizado = get_font(20).render(opcion, True, (255, 255, 255))
-                texto_rect = texto_renderizado.get_rect(center=(self.posicion_x, self.posicion_y))
+                texto_rect = texto_renderizado.get_rect(center=(posicion_x, posicion_y))
                 if texto_rect.collidepoint(mouse_posicion):
                     retorno = opcion  # devuelve la opcion que clikeó
-                self.posicion_y += 100
+                posicion_y += 80
             else:
                 # Cambiar a la segunda columna
-                self.posicion_x += 300
-                self.posicion_y = 200  # Resetear Y para la nueva columna
+                posicion_x += 400
+                posicion_y = self.posicion_y_inicial  # Resetear Y para la nueva columna
                 texto_renderizado = get_font(20).render(opcion, True, (255, 255, 255))
-                texto_rect = texto_renderizado.get_rect(center=(self.posicion_x, self.posicion_y))
+                texto_rect = texto_renderizado.get_rect(center=(posicion_x, posicion_y))
                 if texto_rect.collidepoint(mouse_posicion):
                     retorno = opcion  # devuelve la opcion que clikeó
-                self.posicion_y += 100
+                posicion_y += 80
                 contador = 0
             contador += 1
     

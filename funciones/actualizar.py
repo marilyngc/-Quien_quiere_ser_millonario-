@@ -1,8 +1,9 @@
 from .funciones import dibujar_titulo
 from .dibujar import mostrar_ganancias
 
-def actulizar_pantalla_preguntas(ventana, background,texto,tamaño_texto, color_texto, color_fondo, posicion, pregunta,comodin, ganancia):
+def actulizar_pantalla_preguntas(ventana, background,background_opciones,texto,tamaño_texto, color_texto, color_fondo, posicion, pregunta,comodin, ganancia):
     ventana.blit(background,(0,0)) 
+    ventana.blit(background_opciones,(0,0)) 
     dibujar_titulo(ventana,texto, tamaño_texto, color_texto, color_fondo,posicion)
     mostrar_ganancias(ganancia, ventana)
     # muestra las preguntas en ventana

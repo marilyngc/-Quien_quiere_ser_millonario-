@@ -7,7 +7,7 @@ from funciones.pregunta_class import Pregunta
 from Archivos.parser_json import parsear_json
 from Archivos.parser_csv import leer_archivos
 
-from funciones.dibujar import dibujar_titulo, mostrar_ultima_ganancia
+from funciones.dibujar import dibujar_titulo, mostrar_ultima_ganancia, dibujar_imagen
 from funciones.preguntas_funciones import *
 from funciones.actualizar import actulizar_pantalla_preguntas, actualizar_pantalla_menu
 
@@ -32,8 +32,8 @@ AZUL = (0, 0, 255)
 VERDE = (0, 255, 0)
 AZUL_CLARO = (0, 150, 255)
 
-ANCHO_VENTANA = 1100
-LARGO_VENTANA = 600
+ANCHO_VENTANA = 1200
+LARGO_VENTANA = 700
 TAMAÑO_VENTANA = (ANCHO_VENTANA, LARGO_VENTANA)
 ventana = pygame.display.set_mode(TAMAÑO_VENTANA) # pixeles
 
@@ -52,6 +52,10 @@ background = pygame.transform.scale(background, (TAMAÑO_VENTANA))
 background_jugar = pygame.image.load("imagenes\Background_jugar.jpg")
 background_jugar = pygame.transform.scale(background_jugar, (TAMAÑO_VENTANA))
 
+background_opciones = pygame.image.load("imagenes\opciones.png")
+background_opciones = pygame.transform.scale(background_opciones, (TAMAÑO_VENTANA))
+
+
 lista_ultima_ganancia = []
 
 def ganador():
@@ -65,7 +69,7 @@ def ganador():
         actualizar_pantalla_menu(ventana, background,"GANASTE!",30,BLANCO, None,(550,100), boton)
 
         dibujar_titulo(ventana,"Quieres jugar de nuevo?", 30, BLANCO, None,(550,300))
-        mostrar_ultima_ganancia(lista_ultima_ganancia[0], ventana, (550,140))
+        mostrar_ultima_ganancia(lista_ultima_ganancia[0], ventana, (550,340))
         boton_clickeado = evento(boton,lista_botones ,ventana, mouse_posicion)
         if boton_clickeado == "Si":
             main_menu()
@@ -81,14 +85,14 @@ def perdedor():
     
     clock = pygame.time.Clock()
     lista_botones = ["Si","No"]
-    boton = Button((450,400),lista_botones, 20,BLANCO, None,ROJO,"Horizontal",None)
+    boton = Button((500,400),lista_botones, 20,BLANCO, None,ROJO,"Horizontal","imagenes\Botones\Boton_xs.png")
 
     while True:
         mouse_posicion = pygame.mouse.get_pos()
-        actualizar_pantalla_menu(ventana, background,"Perdiste!",30,BLANCO, None,(550,100), boton)
+        actualizar_pantalla_menu(ventana, background,"Perdiste!",30,BLANCO, None,(600,150), boton)
 
-        dibujar_titulo(ventana,"Quieres jugar de nuevo?", 30, BLANCO, None,(550,300))
-        mostrar_ultima_ganancia(lista_ultima_ganancia[0], ventana, (550,140))
+        dibujar_titulo(ventana,"¿Quieres jugar de nuevo?", 30, BLANCO, None,(600,300))
+        mostrar_ultima_ganancia(lista_ultima_ganancia[0], ventana, (600,210))
         boton_clickeado = evento(boton,lista_botones ,ventana, mouse_posicion)
         if boton_clickeado == "Si":
             main_menu()
@@ -112,25 +116,21 @@ def video_juegos():
     
     lista_comodines = ["Publico","50-50","Llamada"]
     # comodines
-    comodin = Button((400,550),lista_comodines,20,BLANCO, None,ROJO, "Horizontal", None)
+    comodin = Button((200,70),lista_comodines,10,BLANCO, None,ROJO, "Vertical",None)
 
     clock = pygame.time.Clock()
     tiempo_inicial = pygame.time.get_ticks()
     
-    # bandera_cincuenta = True
-    # bandera_llamada = True
-    # bandera_publico = True
     lista_banderas = [True, True, True]
     
     ultima_ganancia = 0
     
     while True:
-        
         pregunta = preguntas_progresivas(preguntas_respuestas["videojuegos"],valor)
         
         mouse_posicion = pygame.mouse.get_pos()
         
-        actulizar_pantalla_preguntas(ventana, background, "Estamos en video juegos",30,BLANCO, None, (550,100), pregunta, comodin, matriz_ganancias)
+        actulizar_pantalla_preguntas(ventana, background,background_opciones, "",10,BLANCO, None, (600,150), pregunta, comodin,matriz_ganancias)
         
         evento = evento_video_juegos(pregunta, comodin, matriz_ganancias, mouse_posicion, ventana, lista_pistas, lista_banderas, valor, ultima_ganancia)
         if evento == "correcta":
@@ -154,7 +154,8 @@ def video_juegos():
             ganador()
         
         # mostrar contador
-        dibujar_titulo(ventana,str(tiempo_transcurrido),20,BLANCO, None,(70,100) )    
+        dibujar_imagen(ventana,"imagenes\Background_contador.png",(600,70))
+        dibujar_titulo(ventana,str(tiempo_transcurrido),20,BLANCO, None,(600,70) )    
        
         pygame.display.update()
         
@@ -186,11 +187,11 @@ def jugar():
     clock = pygame.time.Clock()
     #Los botones se crean fuera del bucle principal para evitar recrearlos en cada iteración.
     lista_menu_jugar = ["VIDEO JUEGOS","COMPONENTES","REGRESAR"]
-    boton = Button((550,250), lista_menu_jugar, 30, BLANCO,None, ROJO, "Vertical",None)
+    boton = Button((600,250), lista_menu_jugar, 20, BLANCO,None, ROJO, "Vertical","imagenes\Botones\Boton_xl.png")
 
     while True:
         mouse_posicion = pygame.mouse.get_pos()
-        actualizar_pantalla_menu(ventana, background_jugar,"Elige una categoria", 30, BLANCO, None,(550,100),boton)
+        actualizar_pantalla_menu(ventana, background,"Elige una categoria", 40, BLANCO, None,(600,120),boton)
 
         boton_clickeado = evento(boton,lista_menu_jugar ,ventana, mouse_posicion)
         if boton_clickeado == "VIDEO JUEGOS":
@@ -208,11 +209,11 @@ def main_menu():
     clock = pygame.time.Clock()
     lista_botones = ["JUGAR","SALIR"]
     #Los botones se crean fuera del bucle principal para evitar recrearlos en cada iteración.
-    boton = Button((550,300), lista_botones,30,BLANCO,None, ROJO, "Vertical","imagenes\play_rect.png")
+    boton = Button((600,300), lista_botones,30,BLANCO,None, ROJO, "Vertical","imagenes\Botones\Boton_xl.png")
 
     while  True: # blucle infinito
         menu_mouse_posicion = pygame.mouse.get_pos()
-        actualizar_pantalla_menu(ventana, background, "Bienvenido!", 30, BLANCO, None,(550,100),boton)
+        actualizar_pantalla_menu(ventana, background, "Bienvenido!", 60, BLANCO, None,(600,120),boton)
         
         # EVENTOS
         boton_clickeado = evento(boton,lista_botones ,ventana, menu_mouse_posicion)

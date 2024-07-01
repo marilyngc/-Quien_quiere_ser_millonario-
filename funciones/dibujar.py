@@ -1,5 +1,5 @@
 from .funciones import dibujar_imagen, dibujar_titulo, renderizar_texto
-
+from package_input.inputs import determinar_formato_ganancia
 # esta funcion funciona
 # def mostrar_boton(ventana, orientacion, posicion, lista_texto, imagen, tamaño_fuente, color_texto, color_fondo):
 #     posicion_x_inicial = posicion[0]
@@ -103,9 +103,9 @@ def mostrar_ganancias(matriz_ganancias:list, ventana):
     
     for i in range(len(matriz_ganancias) -1, -1, -1): 
             for j in range(len(matriz_ganancias[i])):
-                dibujar_titulo(ventana,f"${matriz_ganancias[i][j]:3}", 20, (255,255,255), (0,0,0), (posicion_x, posicion_y))   
+                dibujar_titulo(ventana,f"{determinar_formato_ganancia(str(matriz_ganancias[i][j])):3}", 20, (255,255,255), (0,0,0), (posicion_x, posicion_y))   
                 posicion_y += 50
                 
 def mostrar_ultima_ganancia(ganancia:int, ventana, posicion): 
     
-    dibujar_titulo(ventana, str(ganancia), 20, (255,255,255), None, posicion)
+    dibujar_titulo(ventana, ganancia, 20, (255,255,255), None, posicion)

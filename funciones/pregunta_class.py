@@ -84,10 +84,7 @@ class Pregunta:
     def es_correcta(self,opcion) -> bool:
         retorno = False 
         if opcion == self.correcta:
-            # print("repuesta correcta :D")
             retorno = True
-        # else:
-            # print("respuesta incorrecta :C")
             
         return retorno
     

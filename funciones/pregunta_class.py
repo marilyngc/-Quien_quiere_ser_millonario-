@@ -1,10 +1,5 @@
-from .dibujar import dibujar_titulo, get_font
+from .dibujar import dibujar_texto, get_font
 import random
-from functools import reduce 
-
-BLANCO = (255, 255, 255)
-
-
 
 class Pregunta: 
     def __init__(self, diccionario: dict) -> None: # este metodo inicial se llama a llamar sin que lo lllame
@@ -17,13 +12,35 @@ class Pregunta:
         self.posicion_y_inicial = 550  # posicion inicial
        
     
-    def mostrar_preguntas(self,ventana):
-        dibujar_titulo(ventana, self.pregunta, 10, BLANCO,None,(600,430))
+    def mostrar_preguntas(self,ventana, color_texto:tuple):
+        """mostrar preguntas
 
-    def retornar_opciones(self):
+        Args:
+            ventana (tuple): ventana del juego
+            color_texto(tuple): color para el texto
+        """
+        dibujar_texto(ventana, self.pregunta, 10, color_texto,None,(600,430))
+
+    def retornar_preguntas(self):
+        return self.pregunta
+    
+    def retornar_opciones(self) -> list:
+        """retornan opciones
+
+        Returns:
+            list: lista de opciones
+        """
         return self.opciones
     
-    def mouse_movimiento(self, mouse_posicion)  :  
+    def capturar_mouse_movimiento(self, mouse_posicion:tuple) -> str:  
+        """Capturar el movimiento del mouse  
+
+        Args:
+            mouse_posicion (tuple): posicion del mouse en el momento
+
+        Returns:
+            str: opcion elegida
+        """
         retorno = None  # Si no se clickeó ninguna opción, devuelve None
         posicion_y = self.posicion_y_inicial
         posicion_x = self.posicion_x_inicial
@@ -51,7 +68,15 @@ class Pregunta:
     
         return retorno
 
-    def es_correcta(self,opcion) -> bool:
+    def es_correcta(self,opcion:str) -> bool:
+        """Determinar la correcta
+
+        Args:
+            opcion (str): opcion elegida
+
+        Returns:
+            bool: True si es la opcion correcta | False si es la incorrecta
+        """
         retorno = False 
         if opcion == self.correcta:
             retorno = True
@@ -59,6 +84,19 @@ class Pregunta:
         return retorno
     
     def determinar_ganancia(self, matriz_ganancias:list[int], ganancia_facil:int, ganancia_media:int, ganancia_dificil:int, numero_pregunta:int, ultima_ganancia:int) -> list:
+        """Determinar ganancia
+
+        Args:
+            matriz_ganancias (list[int]): matriz con ganancias generadas
+            ganancia_facil (int): ganancia en dificultad facil
+            ganancia_media (int): ganancia en dificultad media
+            ganancia_dificil (int): ganancia en dificultad dificil
+            numero_pregunta (int): numero de la pregunta
+            ultima_ganancia (int): ultima ganancia generada
+
+        Returns:
+            list: matriz establecida con la ganancia actualizada
+        """
         if self.dificultad == "facil":
             ganancia = ganancia_facil 
         elif self.dificultad == "medio":
@@ -71,7 +109,12 @@ class Pregunta:
         return matriz_ganancias
     
     #comodines
-    def obtener_dos_respuestas(self): 
+    def obtener_dos_respuestas(self) -> list: 
+        """Obtener dos respuestas
+
+        Returns:
+            list: lista con 2 opciones incorrectas vacia 
+        """
         i = 0
         contador = 0
         opciones_ciencuenta = [""] * len(self.opciones)
@@ -85,7 +128,15 @@ class Pregunta:
         
         return opciones_ciencuenta
     
-    def crear_pista(self, lista_pista):
+    def obtener_pista(self, lista_pista:list[dict]) -> str:
+        """obtener pista
+
+        Args:
+            lista_pista (list[dict]): lista con diccionarios que contienen las preguntas y pistas
+
+        Returns:
+            pista: str de la pista
+        """
         for diccionario in lista_pista:
             if self.pregunta == diccionario["pregunta"]:
                 pista = diccionario["pista"]
@@ -94,6 +145,14 @@ class Pregunta:
         return pista
     
     def crear_porcenajes(self,lista_porcentaje:list) -> list: 
+        """Crear porcentajes
+
+        Args:
+            lista_porcentaje (list): lista vacia
+
+        Returns:
+            list: listas con porcentajes generados de forma aleatoria
+        """
         # correcta = set(filter(lambda opciones: opciones == self.correcta, self.opciones)) #una manera de obtener la correcta 
         
         porcentaje_uno = random.randint(0,100)

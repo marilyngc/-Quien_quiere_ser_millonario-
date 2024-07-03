@@ -1,4 +1,4 @@
-import re
+
 def verificar_ingreso_datos(bandera:bool) -> bool: 
     """Verificar el ingreso de los datos
 
@@ -16,6 +16,14 @@ def verificar_ingreso_datos(bandera:bool) -> bool:
     return retorno
 
 def determinar_formato_ganancia(cadena:str) -> str:
+    """Determinar el formato de la ganancia
+
+    Args:
+        cadena (str): cadena con el valor a mostrar
+
+    Returns:
+        str: la cadena con un formato establecido
+    """
     nueva_cadena = ""
     cadena_intermedia = ""
     cadena_formateada = ""

@@ -1,17 +1,12 @@
 from .dibujar import dibujar_titulo, get_font
 import random
 from functools import reduce 
+
 BLANCO = (255, 255, 255)
 
 
-# metodos que pertenecen a la instancia, es decir al objeto mismo
-#para usarlo es atraves del objeto 
-# metodos de instancia 
 
 class Pregunta: 
-    # metodo
-    # por defecto python busca el iniciador 
-    # init es un constructor
     def __init__(self, diccionario: dict) -> None: # este metodo inicial se llama a llamar sin que lo lllame
         # variables de instancia
         self.pregunta = diccionario["pregunta"] # -> atributos - son las que tienen un objeto
@@ -20,41 +15,15 @@ class Pregunta:
         self.dificultad = diccionario["dificultad"]
         self.posicion_x_inicial = 400
         self.posicion_y_inicial = 550  # posicion inicial
-      
-    # metodo de instancia, se encuentra dentro de la clase Pregunta y le pertenece a la instancia 
-    # este metodo se caracteriza por poseer obligatoriamente un parametro  que haga referencia al objeto mismo
-    
-    # SELF no es una palabra reservada, es un parametro que representa a la instancia
-    # SELF hace referencia al objeto , osea se llama asi mismo
-    #SELF equivale al nombre del objeto actual que estamos trabajando
-    # con el SELF entro a la instancia
-    # con metodos de instancia es posible: crear, modificar, eliminar, leer atributos del objeto. se puede llamar otros metodos de instancia dentro de ellos
+       
     
     def mostrar_preguntas(self,ventana):
         dibujar_titulo(ventana, self.pregunta, 10, BLANCO,None,(600,430))
 
-        # Reiniciar la posición Y para las opciones
-
-        # Reiniciar la posición Y para las opciones
-        posicion_y = self.posicion_y_inicial
-        posicion_x = self.posicion_x_inicial
-        contador = 0
-
-        # Recorrer las opciones
-        for opcion in self.opciones:
-            if contador < 2:
-                dibujar_titulo(ventana, opcion, 15, BLANCO, None, (posicion_x, posicion_y))
-                posicion_y += 80
-            else:
-                # Cambiar a la segunda columna
-                posicion_x += 400
-                posicion_y = self.posicion_y_inicial  # Resetear Y para la nueva columna
-                dibujar_titulo(ventana, opcion, 15, BLANCO, None, (posicion_x, posicion_y))
-                posicion_y += 80
-                contador = 0
-            contador += 1
-
-    def mouse_movimiento(self, mouse_posicion):  
+    def retornar_opciones(self):
+        return self.opciones
+    
+    def mouse_movimiento(self, mouse_posicion)  :  
         retorno = None  # Si no se clickeó ninguna opción, devuelve None
         posicion_y = self.posicion_y_inicial
         posicion_x = self.posicion_x_inicial
@@ -90,7 +59,6 @@ class Pregunta:
         return retorno
     
     def determinar_ganancia(self, matriz_ganancias:list[int], ganancia_facil:int, ganancia_media:int, ganancia_dificil:int, numero_pregunta:int, ultima_ganancia:int) -> list:
-        
         if self.dificultad == "facil":
             ganancia = ganancia_facil 
         elif self.dificultad == "medio":
@@ -102,24 +70,22 @@ class Pregunta:
         
         return matriz_ganancias
     
-    def obtener_dos_respuestas(self): #comodines
-        #mejore
+    #comodines
+    def obtener_dos_respuestas(self): 
         i = 0
         contador = 0
-        opciones_ciencuenta = []
-        #utilizo un while porque si elimino dentro de un for se rompe
-        while i < len(self.opciones): # el valor "i" es el que se va a ir aumentando en cada iteracion
-            if self.es_correcta(self.opciones[i]) == False and contador < 2:
-                opciones_ciencuenta.append(self.opciones[i])
+        opciones_ciencuenta = [""] * len(self.opciones)
+      
+        for i in range(len(self.opciones)):
+            if self.es_correcta(self.opciones[i]) == False and contador < 1:
+                opciones_ciencuenta[i] = self.opciones[i]
                 contador += 1
-            i +=1
-            
-        print(opciones_ciencuenta)
-        print(self.opciones)
+            elif self.es_correcta(self.opciones[i]):
+                opciones_ciencuenta[i] = self.opciones[i]
+        
         return opciones_ciencuenta
     
     def crear_pista(self, lista_pista):
-        
         for diccionario in lista_pista:
             if self.pregunta == diccionario["pregunta"]:
                 pista = diccionario["pista"]
@@ -136,7 +102,6 @@ class Pregunta:
         porcentaje_cuatro = 100 - porcentaje_uno - porcentaje_dos - porcentaje_tres
         
         lista_porcentaje = [porcentaje_uno, porcentaje_dos, porcentaje_tres, porcentaje_cuatro]
-        
         
         return lista_porcentaje
     

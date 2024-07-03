@@ -35,17 +35,17 @@ def obtener_evento_comodines(comodin, pregunta, lista_pistas, lista_banderas, mo
         if comodin_clickeado == "Llamada" and verificar_ingreso_datos(lista_banderas[0]):
             pista = pregunta.crear_pista(lista_pistas)
             lista_banderas[0] = False
-            recurso = pista
+            recurso = [pista,"Llamada"]
             
         elif comodin_clickeado == "50-50" and verificar_ingreso_datos(lista_banderas[1]):
             lista_banderas[1] = False
-            respuestas = pregunta.obtener_dos_respuestas() #ver como recuperar aquellas eliminadas
-            recurso = respuestas
+            respuestas = pregunta.obtener_dos_respuestas()
+            recurso = [respuestas,"50-50"]
             
         elif comodin_clickeado == "Publico" and verificar_ingreso_datos(lista_banderas[2]):
             lista_banderas[2] = False
             porcentajes = pregunta.crear_porcenajes(lista_porcentaje)
-            recurso = porcentajes
+            recurso = [porcentajes,"Publico"]
             
     return recurso
 

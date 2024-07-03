@@ -1,5 +1,5 @@
 from funciones.pregunta_class import *
-from funciones.preguntas_funciones import *
+from funciones.funciones import *
 from Archivos.parser_json import *
 from funciones.comodines import *
 path_preguntas ="Archivos\documentos\preguntas_respuestas.json"

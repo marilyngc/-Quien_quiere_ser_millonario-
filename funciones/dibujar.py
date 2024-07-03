@@ -1,97 +1,32 @@
-from .funciones import dibujar_imagen, dibujar_titulo, renderizar_texto
 from package_input.inputs import determinar_formato_ganancia
-# esta funcion funciona
-# def mostrar_boton(ventana, orientacion, posicion, lista_texto, imagen, tamaño_fuente, color_texto, color_fondo):
-#     posicion_x_inicial = posicion[0]
-#     posicion_y_inicial = posicion[1]
+import pygame
 
-#     if orientacion == "Vertical":
-#         # Reiniciar la posición Y para las opciones
-#         posicion_y = posicion_y_inicial
-#         for texto in lista_texto:
-#             if imagen:
-#                 dibujar_imagen(ventana, imagen, (posicion_x_inicial, posicion_y))
-#             dibujar_titulo(ventana, texto, tamaño_fuente, color_texto, color_fondo, (posicion_x_inicial, posicion_y))
-#             posicion_y += 100
-#     elif orientacion == "Horizontal":
-#         # Reiniciar la posición X para las opciones
-#         posicion_x = posicion_x_inicial
-#         for texto in lista_texto:
-#             if imagen:
-#                 dibujar_imagen(ventana, imagen, (posicion_x, posicion_y_inicial))
-#             dibujar_titulo(ventana, texto, tamaño_fuente, color_texto, color_fondo, (posicion_x, posicion_y_inicial))
-#             posicion_x += 150
+def get_font(tamaño):
+    return pygame.font.Font("font\Font.ttf",tamaño) # definir la configuracion de la fuente
 
-# # def mostrar_boton(ventana, orientacion, posicion,lista_texto, imagen, tamaño_fuente, color_texto, color_fondo):
-# #     # dibuja de manera vertical
-# #     posicion_x_inicial = posicion[0]
-# #     posicion_y_inicial = posicion[1]
-# #     if orientacion == "Vertical":
-# #         # Reiniciar la posición Y para las opciones
-# #         posicion_y = posicion_y_inicial
-# #     else:    
-# #         posicion_x = posicion_x_inicial
-# #         for texto in lista_texto:
-# #             if imagen:
-# #                 dibujar_imagen(ventana,imagen,(posicion_x, posicion_y))
-              
-# #             dibujar_titulo(ventana, texto,tamaño_fuente, color_texto, color_fondo, (posicion_x, posicion_y)) 
- 
-# #     if orientacion == "Vertical":    
-# #         posicion_y += 100     
-# #     elif orientacion == "Horizontal":   
-# #         posicion_x += 150        
+def dibujar_imagen(ventana,image_url,posicion):
+    menu_imagen = pygame.image.load(image_url)
+    menu_recta = menu_imagen.get_rect(center= (posicion[0], posicion[1]))
+    ventana.blit(menu_imagen,menu_recta)
 
-# def mouse_movimiento_boton(mouse_posicion, orientacion, posicion, lista_texto):
-   
-#         posicion_x_inicial = posicion[0]
-#         posicion_y_inicial = posicion[1]
-#         retorno = None
-#         if orientacion == "Vertical":
-#             posicion_y = posicion_y_inicial   
-#         else:
-#             sposicion_x = posicion_x_inicial
-#             # compara las posiciones 
-#             for texto in lista_texto:
-                
-#                 texto_recta = renderizar_texto(texto)
-#                 if texto_recta.collidepoint(mouse_posicion):
-#                     retorno = texto 
-                  
-#                 if orientacion == "Vertical":
-#                     posicion_y += 100  
-#                 elif orientacion == "Horizontal":  
-#                     posicion_x += 150     
-                     
-#         return retorno    
-       
-            
-# def mostrar_preguntas(ventana,pregunta,posicion,lista_opcion, color_texto): #PASAR A OTRA CLASE
-#     posicion_x_inicial = posicion[0]
-#     posicion_y_inicial = posicion[1]
-#     dibujar_titulo(ventana, pregunta, 10, color_texto,None,(550,150))
-#       # Reiniciar la posición Y para las opciones
-#   # Reiniciar la posición Y para las opciones
-#     contador = 0
-#       # Recorrer las opciones
-#     for opcion in lista_opcion:
-#         if contador < 2:
-#             dibujar_titulo(ventana, opcion, 10, color_texto, None, (posicion_x, posicion_y))
-#             posicion_y += 100
-#         else:
-#             # Cambiar a la segunda columna
-#             posicion_x += 300
-#             posicion_y = 200  # Resetear Y para la nueva columna
-#             dibujar_titulo(ventana, opcion, 10, color_texto, None, (posicion_x,posicion_y))
-#             posicion_y += 100
-#             contador = 0
-#         contador += 1
-        
+def renderizar_texto(self,texto):
+    #creo el tipo de texto
+    texto_renderizado = get_font(self.tamaño_fuente).render(texto, True, self.color_texto)
+    # Rectangulo de cada texto
+    return  texto_renderizado.get_rect(center=(self.posicion_x_inicial, self.posicion_y))
+    
+# dibuja texto
+def dibujar_titulo(ventana, mensaje,tamaño_fuente ,color_texto, color_fondo, posicion): 
+        menu_texto = get_font(tamaño_fuente).render(mensaje, True, color_texto, color_fondo)
+        menu_recta = menu_texto.get_rect(center = (posicion[0], posicion[1]))
+        ventana.blit(menu_texto,menu_recta)  
+
 def mostrar_porcentajes(lista_porcentajes:list, ventana, color_texto, coordenadas):
     coordenada_x = coordenadas[0]
     coordenada_y = coordenadas[1]
-    for i in range(len(lista_porcentajes)): #IMAGEN DINAMICA
-        porcentaje = f"{lista_porcentajes[i]}"
+    
+    for i in range(len(lista_porcentajes)):
+        porcentaje = f"{lista_porcentajes[i]}%"
         dibujar_titulo(ventana, str(porcentaje),20, color_texto,None, (coordenada_x, coordenada_y))
         coordenada_x +=50 
         print(lista_porcentajes[i])

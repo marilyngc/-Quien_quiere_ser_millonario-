@@ -8,7 +8,7 @@ from Archivos.parser_json import parsear_json
 from Archivos.parser_csv import leer_archivos
 
 from funciones.dibujar import dibujar_titulo, dibujar_imagen, mostrar_ultima_ganancia
-from funciones.preguntas_funciones import *
+from funciones.funciones import *
 from funciones.actualizar import actulizar_pantalla_preguntas, actualizar_pantalla_menu
 
 from funciones.manejar_eventos import obtener_evento, obtener_evento_videojuegos
@@ -138,7 +138,7 @@ def video_juegos():
         evento = obtener_evento_videojuegos(pregunta, comodin, matriz_ganancias, mouse_posicion, ventana, lista_pistas, lista_banderas, valor, ultima_ganancia)
         if evento == "correcta":
             tiempo_inicial = pygame.time.get_ticks()
-            ultima_ganancia = sumar_matriz(matriz_ganancias)
+            ultima_ganancia = determinar_ultima_ganancia(matriz_ganancias, lambda valor: valor != 0)
             valor += 1
             
         elif evento == "incorrecta":
@@ -153,7 +153,7 @@ def video_juegos():
             perdedor()
 
         if valor == len(preguntas_respuestas["videojuegos"]):
-            ultima_ganancia = sumar_matriz(matriz_ganancias) + 1
+            ultima_ganancia = determinar_ultima_ganancia(matriz_ganancias,lambda valor: valor != 0) + 1
             lista_ultima_ganancia.append(ultima_ganancia)
             ganador()
         

@@ -1,5 +1,6 @@
-from .funciones import dibujar_titulo
+from .dibujar import dibujar_titulo
 from .dibujar import mostrar_ganancias
+from .manejar_eventos import obtener_evento_comodines
 
 def actulizar_pantalla_preguntas(ventana, background,background_opciones,texto,tamaño_texto, color_texto, color_fondo, posicion, pregunta,comodin, ganancia):
     ventana.blit(background,(0,0)) 

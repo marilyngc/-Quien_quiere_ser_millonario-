@@ -2,7 +2,7 @@ import pygame
 import sys
 from package_input.inputs import verificar_ingreso_datos
 from funciones.dibujar import mostrar_porcentajes
-
+from funciones.funciones import determinar_diccionario_comodin
 def obtener_evento(boton,botones_validos, ventana, mouse_posicion): #vervo en infinitivo
     retorno = None
     boton_clikeado = boton.mouse_movimiento(mouse_posicion)
@@ -25,18 +25,29 @@ BLANCO = (255, 255, 255)
 
 def obtener_evento_comodines(comodin_clickeado, pregunta, ventana, lista_pistas, lista_banderas): #verbo en infinitivo
     lista_porcentaje = []
+    porcentajes = 0
+    resultado = {
+        "comodin_usado": True,
+        "tipo_comodin": None,
+        "recurso":  None,
+    }
+    
     if comodin_clickeado == "Llamada" and verificar_ingreso_datos(lista_banderas[0]):
-        pregunta.crear_pista(lista_pistas)
+        pista = pregunta.crear_pista(lista_pistas)
+        print(pista)
         lista_banderas[0] = False
+        
+        
     elif comodin_clickeado == "50-50" and verificar_ingreso_datos(lista_banderas[1]):
         lista_banderas[1] = False
         pregunta.eliminar_dos_respuestas() #ver como recuperar aquellas eliminadas
-      
+        
     elif comodin_clickeado == "Publico" and verificar_ingreso_datos(lista_banderas[2]):
         lista_banderas[2] = False
         porcentajes = pregunta.crear_porcenajes(lista_porcentaje)
-        mostrar_porcentajes(porcentajes, ventana, BLANCO, (30,550))
-                
+        mostrar_porcentajes(porcentajes, ventana, BLANCO, (300,500)) #se necesita blitear con actualizar
+    
+    return porcentajes
 
 def obtener_evento_videojuegos(pregunta, comodin, matriz_ganancia, mouse_posicion, ventana, lista_pistas,lista_banderas, valor, ultima_ganancia): #verbo en infinitivo
     lista_eventos = pygame.event.get()
@@ -60,11 +71,8 @@ def obtener_evento_videojuegos(pregunta, comodin, matriz_ganancia, mouse_posicio
             
             if comodin_clickeado:
                 obtener_evento_comodines(comodin_clickeado, pregunta, ventana, lista_pistas, lista_banderas)        
-
                 
         elif evento.type == pygame.MOUSEMOTION:
             comodin.actualizar_color_texto(mouse_posicion, ventana)
     return opcion_correcta        
 
-def eventar_():
-    pass

@@ -1,4 +1,4 @@
-from .funciones import dibujar_titulo, dibujar_imagen,get_font
+from .dibujar import dibujar_titulo, dibujar_imagen,get_font
 import pygame
 class Button(): #mostrar 
     def __init__(self, posicion, lista_texto, tamaño_fuente, color_texto, color_fondo,hover_color, orientacion,image):
@@ -65,10 +65,11 @@ class Button(): #mostrar
                 if texto_recta.collidepoint(mouse_posicion):
                     retorno = texto 
                 self.posicion_x += 200       
+                
         return retorno           
     
     def actualizar_color_texto(self,boton,ventana):
-         # dibuja de manera vertical
+        # dibuja de manera vertical
         if self.orientacion == "Vertical":
             # Reiniciar la posición Y para las opciones
             self.posicion_y = self.posicion_y_inicial

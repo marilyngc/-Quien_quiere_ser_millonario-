@@ -1,5 +1,6 @@
-from .funciones import dibujar_titulo, get_font
+from .dibujar import dibujar_titulo, get_font
 import random
+from functools import reduce 
 BLANCO = (255, 255, 255)
 
 
@@ -29,7 +30,7 @@ class Pregunta:
     # con el SELF entro a la instancia
     # con metodos de instancia es posible: crear, modificar, eliminar, leer atributos del objeto. se puede llamar otros metodos de instancia dentro de ellos
     
-    def mostrar_preguntas(self,ventana): #PASAR A OTRA CLASE
+    def mostrar_preguntas(self,ventana):
         dibujar_titulo(ventana, self.pregunta, 10, BLANCO,None,(600,430))
 
         # Reiniciar la posición Y para las opciones
@@ -53,7 +54,7 @@ class Pregunta:
                 contador = 0
             contador += 1
 
-    def mouse_movimiento(self, mouse_posicion):  # PASAR A OTRA CLASE
+    def mouse_movimiento(self, mouse_posicion):  
         retorno = None  # Si no se clickeó ninguna opción, devuelve None
         posicion_y = self.posicion_y_inicial
         posicion_x = self.posicion_x_inicial
@@ -96,8 +97,7 @@ class Pregunta:
             ganancia = ganancia_media
         else:
             ganancia = ganancia_dificil
-            
-    
+        
         matriz_ganancias[numero_pregunta][0] = ultima_ganancia + ganancia
         
         return matriz_ganancias
@@ -121,14 +121,22 @@ class Pregunta:
         
         for diccionario in lista_pista:
             if self.pregunta == diccionario["pregunta"]:
-                print(diccionario["pista"])
+                pista = diccionario["pista"]
+                break
+        
+        return pista
     
     def crear_porcenajes(self,lista_porcentaje:list) -> list: 
-
-        for i in range(4):
-            porcentaje = random.randint(0,100)
-            lista_porcentaje.append(porcentaje)
-
+        # correcta = set(filter(lambda opciones: opciones == self.correcta, self.opciones)) #una manera de obtener la correcta 
+        
+        porcentaje_uno = random.randint(0,100)
+        porcentaje_dos = random.randint(0,100 - porcentaje_uno) 
+        porcentaje_tres = random.randint(0,100 - porcentaje_uno - porcentaje_dos) 
+        porcentaje_cuatro = 100 - porcentaje_uno - porcentaje_dos - porcentaje_tres
+        
+        lista_porcentaje = [porcentaje_uno, porcentaje_dos, porcentaje_tres, porcentaje_cuatro ]
+        
+        
         return lista_porcentaje
     
 # al llamor la clase, creamos una instancia

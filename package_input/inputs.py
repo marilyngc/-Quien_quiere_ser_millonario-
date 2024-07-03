@@ -15,7 +15,6 @@ def verificar_ingreso_datos(bandera:bool) -> bool:
     
     return retorno
 
-
 def determinar_formato_ganancia(cadena:str) -> str:
     nueva_cadena = ""
     cadena_intermedia = ""
@@ -34,3 +33,4 @@ def determinar_formato_ganancia(cadena:str) -> str:
         
     cadena_formateada = "$" + cadena_formateada
     return cadena_formateada
+

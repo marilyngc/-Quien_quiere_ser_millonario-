@@ -30,7 +30,6 @@ def mostrar_porcentajes(lista_porcentajes:list, ventana, color_texto, coordenada
             porcentaje = f"{lista_porcentajes[i]}%"
             dibujar_titulo(ventana, str(porcentaje),20, color_texto,None, (coordenada_x, coordenada_y))
             coordenada_x +=50 
-            print(lista_porcentajes[i])
 
 def mostrar_ganancias(matriz_ganancias:list, ventana):
     

@@ -23,11 +23,10 @@ def obtener_evento(boton,botones_validos, ventana, mouse_posicion): #vervo en in
 
 BLANCO = (255, 255, 255)
 
-def obtener_evento_comodines(comodin, pregunta, lista_pistas, lista_banderas, mouse_posicion): #verbo en infinitivo
+def obtener_evento_comodines(comodin, pregunta, lista_pistas, lista_banderas, mouse_posicion, recurso): #verbo en infinitivo
     lista_porcentaje = []
     porcentajes = 0
-    recurso = ""
-    
+   
     comodin_elegido = pygame.mouse.get_pressed() #
     
     if comodin_elegido[0]:
@@ -47,7 +46,7 @@ def obtener_evento_comodines(comodin, pregunta, lista_pistas, lista_banderas, mo
             lista_banderas[2] = False
             porcentajes = pregunta.crear_porcenajes(lista_porcentaje)
             recurso = porcentajes
-        
+            
     return recurso
 
 def obtener_evento_videojuegos(pregunta, comodin, matriz_ganancia, mouse_posicion, ventana, lista_pistas,lista_banderas, valor, ultima_ganancia): #verbo en infinitivo

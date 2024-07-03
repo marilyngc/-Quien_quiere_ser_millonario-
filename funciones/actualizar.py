@@ -9,8 +9,8 @@ def actulizar_pantalla_preguntas(ventana, background,background_opciones,texto,t
     mostrar_ganancias(ganancia, ventana)
     # muestra las preguntas en ventana
     
-    # mostrar_porcentajes(recurso_comodin, ventana, color_texto, (550,600))
-    dibujar_titulo(ventana, recurso_comodin, tamaño_texto, color_texto, color_fondo, (550,200))
+    mostrar_porcentajes(recurso_comodin, ventana, color_texto, (550,600))
+    # dibujar_titulo(ventana, recurso_comodin, tamaño_texto, color_texto, color_fondo, (550,200))
     
     pregunta.mostrar_preguntas(ventana)
     

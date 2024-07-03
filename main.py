@@ -119,7 +119,8 @@ def video_juegos():
     lista_comodines = ["Publico","50-50","Llamada"]
     # comodines
     comodin = Button((200,70),lista_comodines,10,BLANCO, None,ROJO, "Vertical",None)
-
+    recurso_comodin = ""
+    
     lista_banderas = [True, True, True]
 
     lista_ultima_ganancia.pop(0)
@@ -133,14 +134,16 @@ def video_juegos():
         
         mouse_posicion = pygame.mouse.get_pos()
         
-        recurso_comodin = obtener_evento_comodines(comodin, pregunta, lista_pistas, lista_banderas, mouse_posicion)
-        
+        if recurso_comodin == "":
+            recurso_comodin = obtener_evento_comodines(comodin, pregunta, lista_pistas, lista_banderas, mouse_posicion, recurso_comodin)
+            
         actulizar_pantalla_preguntas(ventana, background,background_opciones, "",10,BLANCO, None, (600,150), pregunta, comodin, matriz_ganancias, recurso_comodin)
         
         evento = obtener_evento_videojuegos(pregunta, comodin, matriz_ganancias, mouse_posicion, ventana, lista_pistas, lista_banderas, valor, ultima_ganancia)
         if evento == "correcta":
             tiempo_inicial = pygame.time.get_ticks()
             ultima_ganancia = determinar_ultima_ganancia(matriz_ganancias, lambda ganacia: ganacia != 0)
+            recurso_comodin = ""
             valor += 1
             
         elif evento == "incorrecta":

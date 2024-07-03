@@ -25,11 +25,12 @@ def mostrar_porcentajes(lista_porcentajes:list, ventana, color_texto, coordenada
     coordenada_x = coordenadas[0]
     coordenada_y = coordenadas[1]
     
-    for i in range(len(lista_porcentajes)):
-        porcentaje = f"{lista_porcentajes[i]}%"
-        dibujar_titulo(ventana, str(porcentaje),20, color_texto,None, (coordenada_x, coordenada_y))
-        coordenada_x +=50 
-        print(lista_porcentajes[i])
+    if lista_porcentajes != None:
+        for i in range(len(lista_porcentajes)):
+            porcentaje = f"{lista_porcentajes[i]}%"
+            dibujar_titulo(ventana, str(porcentaje),20, color_texto,None, (coordenada_x, coordenada_y))
+            coordenada_x +=50 
+            print(lista_porcentajes[i])
 
 def mostrar_ganancias(matriz_ganancias:list, ventana):
     

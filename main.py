@@ -11,7 +11,7 @@ from funciones.dibujar import dibujar_titulo, dibujar_imagen, mostrar_ultima_gan
 from funciones.funciones import *
 from funciones.actualizar import actulizar_pantalla_preguntas, actualizar_pantalla_menu
 
-from funciones.manejar_eventos import obtener_evento, obtener_evento_videojuegos
+from funciones.manejar_eventos import obtener_evento, obtener_evento_videojuegos, obtener_evento_comodines
 
 from package_input.inputs import determinar_formato_ganancia
 
@@ -133,12 +133,14 @@ def video_juegos():
         
         mouse_posicion = pygame.mouse.get_pos()
         
-        actulizar_pantalla_preguntas(ventana, background,background_opciones, "",10,BLANCO, None, (600,150), pregunta, comodin,matriz_ganancias)
+        recurso_comodin = obtener_evento_comodines(comodin, pregunta, lista_pistas, lista_banderas, mouse_posicion)
+        
+        actulizar_pantalla_preguntas(ventana, background,background_opciones, "",10,BLANCO, None, (600,150), pregunta, comodin, matriz_ganancias, recurso_comodin)
         
         evento = obtener_evento_videojuegos(pregunta, comodin, matriz_ganancias, mouse_posicion, ventana, lista_pistas, lista_banderas, valor, ultima_ganancia)
         if evento == "correcta":
             tiempo_inicial = pygame.time.get_ticks()
-            ultima_ganancia = determinar_ultima_ganancia(matriz_ganancias, lambda valor: valor != 0)
+            ultima_ganancia = determinar_ultima_ganancia(matriz_ganancias, lambda ganacia: ganacia != 0)
             valor += 1
             
         elif evento == "incorrecta":
@@ -153,7 +155,7 @@ def video_juegos():
             perdedor()
 
         if valor == len(preguntas_respuestas["videojuegos"]):
-            ultima_ganancia = determinar_ultima_ganancia(matriz_ganancias,lambda valor: valor != 0) + 1
+            ultima_ganancia = determinar_ultima_ganancia(matriz_ganancias,lambda ganancia: ganancia != 0) + 1
             lista_ultima_ganancia.append(ultima_ganancia)
             ganador()
         

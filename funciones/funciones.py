@@ -22,10 +22,3 @@ def determinar_ultima_ganancia(matriz:list, criterio):
 
     return ultimo_valor
 
-def determinar_diccionario_comodin(diccionario_resultado:dict,estado: bool, tipo_de_comodin:str, recurso:str|list):
-    
-    diccionario_resultado["comodin_usado"] = estado
-    diccionario_resultado["tipo_comodin"] = tipo_de_comodin
-    diccionario_resultado["recurso"] = recurso
-    
-    return diccionario_resultado

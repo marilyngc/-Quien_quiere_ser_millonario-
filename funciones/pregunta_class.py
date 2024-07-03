@@ -102,20 +102,21 @@ class Pregunta:
         
         return matriz_ganancias
     
-    def eliminar_dos_respuestas(self): #comodines
+    def obtener_dos_respuestas(self): #comodines
         #mejore
         i = 0
         contador = 0
-        opciones_eliminadas = []
+        opciones_ciencuenta = []
         #utilizo un while porque si elimino dentro de un for se rompe
         while i < len(self.opciones): # el valor "i" es el que se va a ir aumentando en cada iteracion
             if self.es_correcta(self.opciones[i]) == False and contador < 2:
-                opciones_eliminadas.append(self.opciones.pop(i))
+                opciones_ciencuenta.append(self.opciones[i])
                 contador += 1
-                
             i +=1
-        
-        return opciones_eliminadas
+            
+        print(opciones_ciencuenta)
+        print(self.opciones)
+        return opciones_ciencuenta
     
     def crear_pista(self, lista_pista):
         
@@ -134,10 +135,8 @@ class Pregunta:
         porcentaje_tres = random.randint(0,100 - porcentaje_uno - porcentaje_dos) 
         porcentaje_cuatro = 100 - porcentaje_uno - porcentaje_dos - porcentaje_tres
         
-        lista_porcentaje = [porcentaje_uno, porcentaje_dos, porcentaje_tres, porcentaje_cuatro ]
+        lista_porcentaje = [porcentaje_uno, porcentaje_dos, porcentaje_tres, porcentaje_cuatro]
         
         
         return lista_porcentaje
     
-# al llamor la clase, creamos una instancia
-# pregunta = Pregunta()

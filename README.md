@@ -12,10 +12,32 @@
 - [Gameplay](https://youtu.be/0ecRS4OHXCM?si=Tsl9w0mXD58-8HUn)
 
 ## :video_game: Juego 
-![Logo](./imagenes/quienquieresermillonario.jpg)
+<div align="center">
+<img width="200" style="margin-bottom: 1rem" src="imagenes\readme\millonario.png" />
+</div>
+
+
 
 ## Descripción 
 Es un juego de trivia que hace referencia al famoso programa de televisión "¿Quien quiere ser millonario?", tendrás un menu, la opcion de elegir de categoría, el de poder cargar tu usuario y poder jugar respondiendo las preguntas indicadas en la ventana. Tambien podrás usar comodines que te ayudan dandote una pista, eliminandote dos respuestas o mismo dandole un porcentaje. El juego acabara si te equivocas, superas el tiempo establecido, deseas salir o ganas. 
+
+## Estructura del Proyecto
+
+El proyecto está organizado en varios módulos para mantener el código limpio y fácil de mantener:
+
+1. **actualizar.py**: Contiene funciones que actualizan la pantalla del juego.
+2. **button_class.py**: Maneja la creación de botones e interracion del usuario con botones.
+3. **dibujar.py**: Contiene funciones que dibuja la información en pantalla.
+4. **funciones.py**: Maneja la obtención de preguntas progresivas y determina la ultima ganancia.
+5. **manejar_eventos.py**: Maneja los eventos del mouse de las categorias, comodines y el menú.
+6. **pregunta_class.py**: Maneja la lógica de cada pregunta del juego, verifica, calcula y funciones de ayuda de comodines .
+7. **main.py**: Punto de entrada del programa que coordina todas las operaciones.
+
+
+<div align="center" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+    <img width="700" style="margin-bottom: 1rem; margin-top: 1.5rem;" src="imagenes/readme/menu.png"/>
+    <img width="700" style="margin-bottom: 1rem; margin-top: 1.5rem;" src="imagenes/readme/juego_trivia.png"/>
+</div>
 
 # Función principal
 Esta es la funcion principal del juego donde establecemos todos los valores necesarios primero para luego hacer las respectivas llamadas a eventos en el while, donde los comodines son tratados aparte de las opciones correctas o incorrectas para manejar de mejor manera los eventos que se realizan y sus retornos diferentes. Ademas contamos con una constante actualizacion de pantalla y establecemos 15 fps por segundo
@@ -119,6 +141,8 @@ class Button(): #mostrar
         self.actualizar()
 ~~~
 Dirigida a todos aquellos botones necesarios a mostrar en pantalla 
+
+
 
 <div align="end">
 

@@ -36,13 +36,11 @@ def obtener_evento_teclado(ventana, texto, color_activo, color_inactivo, mouse_p
                     texto += evento.unicode
     
     return texto
-def obtener_evento(boton:Button ,botones_validos:list, ventana:tuple, mouse_posicion:tuple) -> Button | None :  
+def obtener_evento(boton:Button, mouse_posicion:tuple) -> Button | None :  
     """Obtener evento
 
     Args:
         boton (button_class): un boton determinado como objeto
-        botones_validos (list): lista de botones validos
-        ventana (tuple): ventana del juego
         mouse_posicion (tuple): coordenadas del mouse 
 
     Returns:
@@ -57,11 +55,11 @@ def obtener_evento(boton:Button ,botones_validos:list, ventana:tuple, mouse_posi
         
         elif evento.type == pygame.MOUSEBUTTONDOWN:
             
-            if lambda boton_clickeado: boton_clickeado == botones_validos:
+            if  boton_clickeado:
                 retorno = boton_clickeado
         
-        elif evento.type == pygame.MOUSEMOTION:
-            boton.actualizar_color_texto(boton_clickeado, ventana)
+        # elif evento.type == pygame.MOUSEMOTION:
+        #     boton.actualizar_color_texto(boton_clickeado, ventana)
     
     return retorno
 
@@ -87,17 +85,17 @@ def obtener_evento_comodines(comodin:Button, pregunta:Pregunta, lista_pistas:lis
     if comodin_elegido[0]:
         comodin_clickeado = comodin.capturar_mouse_movimiento(mouse_posicion)
         
-        if comodin_clickeado == "Llamada" and verificar_ingreso_datos(lista_banderas[0]):
+        if comodin_clickeado == "Imagen 2" and verificar_ingreso_datos(lista_banderas[0]):
             pista = pregunta.obtener_pista(lista_pistas)
             lista_banderas[0] = False
             recurso = [pista,"Llamada"]
             
-        elif comodin_clickeado == "50-50" and verificar_ingreso_datos(lista_banderas[1]):
+        elif comodin_clickeado == "Imagen 1" and verificar_ingreso_datos(lista_banderas[1]):
             lista_banderas[1] = False
             respuestas = pregunta.obtener_dos_respuestas()
             recurso = [respuestas,"50-50"]
             
-        elif comodin_clickeado == "Publico" and verificar_ingreso_datos(lista_banderas[2]):
+        elif comodin_clickeado == "Imagen 3" and verificar_ingreso_datos(lista_banderas[2]):
             lista_banderas[2] = False
             porcentajes = pregunta.crear_porcenajes(lista_porcentaje)
             recurso = [porcentajes,"Publico"]

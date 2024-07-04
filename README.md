@@ -113,14 +113,25 @@ Contamos con dos clases:
 Class pregunta
 ~~~ Python
 class Pregunta: 
-    def __init__(self, diccionario: dict) -> None: 
-        
+    def __init__(self, diccionario: dict, tamano_fuente,color_texto,) -> None: 
+        # variables de instancia
         self.pregunta = diccionario["pregunta"] 
         self.opciones = diccionario["opciones"]
         self.correcta = diccionario["correcta"]
         self.dificultad = diccionario["dificultad"]
         self.posicion_x_inicial = 400
-        self.posicion_y_inicial = 550  
+        self.posicion_y_inicial = 550  # posicion inicial
+        self.tamano_fuente = tamano_fuente
+        self.color_texto = color_texto
+        # rectangulo de cada opcion
+        self.recta = []
+        self.texto = []
+        for i in range(len(self.opciones)):
+            texto = get_font(tamano_fuente).render(self.opciones[i], True, color_texto)
+            recta_texto  = texto.get_rect(center=(self.posicion_x_inicial, self.posicion_y_inicial))
+            self.texto.append(texto)
+            self.recta.append(recta_texto)
+        self.actualizar_rectas()
 ~~~
 Dirigida a todo aquel manejo de preguntas, opciones y los comodines utilizados 
 

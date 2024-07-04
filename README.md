@@ -35,9 +35,10 @@ El proyecto está organizado en varios módulos para mantener el código limpio 
 
 
 <div align="center" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
-    <img width="500" style="margin-bottom: 1rem; margin-top: 1.5rem;" src="imagenes/readme/menu.png"/>
-    <img width="500" style="margin-bottom: 1rem; margin-top: 1.5rem;" src="imagenes/readme/juego_trivia.png"/>
+    <img width="370" style="margin-bottom: 1rem; margin-top: 1.5rem; display: inline-block;" src="imagenes/readme/menu.png"/>
+    <img width="370" style="margin-bottom: 1rem; margin-top: 1.5rem; display: inline-block;" src="imagenes/readme/juego_trivia.png"/>
 </div>
+
 
 # Función principal
 Esta es la funcion principal del juego donde establecemos todos los valores necesarios primero para luego hacer las respectivas llamadas a eventos en el while, donde los comodines son tratados aparte de las opciones correctas o incorrectas para manejar de mejor manera los eventos que se realizan y sus retornos diferentes. Ademas contamos con una constante actualizacion de pantalla y establecemos 15 fps por segundo

@@ -1,34 +1,6 @@
 from package_input.inputs import determinar_formato_ganancia
 import pygame
 
-# def mouse_movimiento(self, mouse_posicion, coordenadas, lista_opciones)  :  
-#     retorno = None  # Si no se clickeó ninguna opción, devuelve None
-
-#     posicion_x = coordenadas[0]
-#     posicion_y = coordenadas[1]
-    
-#     contador = 0
-
-#     for opcion in lista_opciones:
-#         if contador < 2:
-#             texto_renderizado = get_font(20).render(opcion, True, (255, 255, 255))
-#             texto_rect = texto_renderizado.get_rect(center=(posicion_x, posicion_y))
-#             if texto_rect.collidepoint(mouse_posicion):
-#                 retorno = opcion  # devuelve la opcion que clikeó
-#             posicion_y += 80
-#         else:
-#             # Cambiar a la segunda columna
-#             posicion_x += 400
-#             posicion_y = coordenadas[0]  # Resetear Y para la nueva columna
-#             texto_renderizado = get_font(20).render(opcion, True, (255, 255, 255))
-#             texto_rect = texto_renderizado.get_rect(center=(posicion_x, posicion_y))
-#             if texto_rect.collidepoint(mouse_posicion):
-#                 retorno = opcion  # devuelve la opcion que clikeó
-#             posicion_y += 80
-#             contador = 0
-#         contador += 1
-
-#     return retorno
 
 def get_font(tamano:int) -> str:
     """Obtener fuente

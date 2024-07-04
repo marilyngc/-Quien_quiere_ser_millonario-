@@ -64,6 +64,6 @@ def actualizar_pantalla_menu(ventana:tuple, background:str, texto:str, tamano_te
     ventana.blit(background,(0,0)) 
     dibujar_texto(ventana,texto,tamano_texto, color_texto,color_fondo,posicion)
     ## Se dibujan los botones en cada iteración del bucle principal.
- 
-    boton.mostrar_boton(ventana) 
+    if boton != None:
+        boton.mostrar_boton(ventana) 
             

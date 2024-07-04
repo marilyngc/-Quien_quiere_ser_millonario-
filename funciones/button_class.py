@@ -18,16 +18,13 @@ class Button(): #mostrar
         self.actualizar()
         
     def actualizar(self):
-        """Mostrar un boton en pantalla
-
-        Args:
-            ventana (tuple): tamano de la ventana
+        """Actualizar en pantalla
         """
         # dibuja de manera vertical
         if self.orientacion == "Vertical":
             self.posicion_y = self.posicion_y_inicial
             for rect in self.recta:
-                rect.center = (self.posicion_x_inicial, self.posicion_y)
+                rect.center = (self.posicion_x_inicial, self.posicion_y) 
                 self.posicion_y += 150  # Espacio entre imágenes
         elif self.orientacion == "Horizontal":
             self.posicion_x = self.posicion_x_inicial
@@ -35,7 +32,12 @@ class Button(): #mostrar
                 rect.center = (self.posicion_x, self.posicion_y_inicial)
                 self.posicion_x += 200 # Espacio entre imágenes
                 
-    def mostrar_boton(self, ventana):
+    def mostrar_boton(self, ventana:tuple):
+        """Mostrar el boton
+
+        Args:
+            ventana (tuple): ventana del juego
+        """
         for i in range(len(self.imagen_load)):
             imagen_load = self.imagen_load[i]
             imagen_recta = self.recta[i]

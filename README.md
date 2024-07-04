@@ -9,7 +9,7 @@
 
 
 ## :link: Link al proyecto
-- [Gameplay](#)
+![Gameplay](https://youtu.be/0ecRS4OHXCM?si=G-wdEcR52dJJ9UeT)
 
 ## :video_game: Juego 
 ![Logo](./imagenes/quienquieresermillonario.jpg)

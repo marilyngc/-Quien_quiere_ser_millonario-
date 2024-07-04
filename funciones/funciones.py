@@ -36,7 +36,7 @@ def determinar_ultima_ganancia(matriz:list, criterio) -> int:
         for j in range(len(matriz[i])):
             if criterio(matriz[i][j]):
                 ultimo_valor = matriz[i][j]
-    
+                break
 
     return ultimo_valor
 

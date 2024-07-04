@@ -20,9 +20,6 @@ class Pregunta:
             color_texto(tuple): color para el texto
         """
         dibujar_texto(ventana, self.pregunta, 10, color_texto,None,(600,430))
-
-    def retornar_preguntas(self):
-        return self.pregunta
     
     def retornar_opciones(self) -> list:
         """retornan opciones
@@ -154,7 +151,6 @@ class Pregunta:
         Returns:
             list: listas con porcentajes generados de forma aleatoria
         """
-        # correcta = set(filter(lambda opciones: opciones == self.correcta, self.opciones)) #una manera de obtener la correcta 
         
         porcentaje_uno = random.randint(0,100)
         porcentaje_dos = random.randint(0,100 - porcentaje_uno) 

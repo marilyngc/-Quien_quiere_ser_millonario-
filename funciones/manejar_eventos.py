@@ -5,38 +5,6 @@ from package_input.inputs import verificar_ingreso_datos
 from .button_class import Button
 from .pregunta_class import Pregunta
 
-def obtener_evento_teclado(ventana, texto, color_activo, color_inactivo, mouse_posicion, activo, color_actual, input_box) -> str:
-    lista_eventos = pygame.event.get() 
-    for evento in lista_eventos: #pygame.event.get()
-        if evento.type == pygame.QUIT: 
-            pygame.quit()
-            sys.exit()
-        elif evento.type == pygame.MOUSEBUTTONDOWN: #presiono el boton del mouse 
-            if input_box.collidepoint(mouse_posicion):
-                activo = not activo #no activo
-                pygame.draw.rect(ventana, color_actual, input_box,2)
-            if activo:
-                color_actual = color_activo
-            else:
-                color_actual = color_inactivo
-                
-        elif evento.type == pygame.KEYDOWN:
-            if activo:
-                if evento.key == pygame.K_BACKSPACE:
-                    texto = texto[:-1] #hasta el final menos 1
-                elif evento.key == pygame.K_ESCAPE:
-                    texto = ""
-                elif evento.key == pygame.K_RETURN:
-                    activo = not activo
-                    if activo:
-                        color_actual = color_activo
-                    else:
-                        color_actual = color_inactivo
-                else:
-                    texto += evento.unicode
-    
-    return texto
-
 def obtener_evento(boton:Button, mouse_posicion:tuple) -> Button | None :  
     """Obtener evento
 
@@ -55,7 +23,7 @@ def obtener_evento(boton:Button, mouse_posicion:tuple) -> Button | None :
             sys.exit()
         elif evento.type == pygame.MOUSEBUTTONDOWN:
             
-            if  boton_clickeado:
+            if boton_clickeado:
                 retorno = boton_clickeado
       
     return retorno

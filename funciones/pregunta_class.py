@@ -15,7 +15,6 @@ class Pregunta:
         # rectangulo de cada opcion
         self.recta = []
         self.texto = []
-        print("self texto", self.texto)
         for i in range(len(self.opciones)):
             texto = get_font(tamano_fuente).render(self.opciones[i], True, color_texto)
             recta_texto  = texto.get_rect(center=(self.posicion_x_inicial, self.posicion_y_inicial))
@@ -72,7 +71,6 @@ class Pregunta:
      
         for i in range(len(self.recta)):
             if self.recta[i].collidepoint(mouse_posicion):
-                print("texto", self.opciones[i])
                 retorno = self.opciones[i]
                 break
     

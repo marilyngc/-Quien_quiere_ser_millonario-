@@ -32,7 +32,9 @@ class Pregunta:
         dibujar_texto(ventana, self.pregunta, 10, color_texto,None,(600,430))
         
     def actualizar_rectas(self):
-                
+        """Actualizar las rectas
+
+        """
     # Reiniciar la posición Y para las opciones
         posicion_x = self.posicion_x_inicial
         posicion_y = self.posicion_y_inicial
@@ -52,6 +54,11 @@ class Pregunta:
             contador += 1
             
     def mostrar_opciones(self,ventana):
+        """Muestra opciones en pantalla
+
+        Args:
+            ventana (tuple): ventana del juego
+        """
         for i in range(len(self.opciones)):
             texto_render = self.texto[i]
             texto_recta = self.recta[i]

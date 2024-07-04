@@ -35,8 +35,8 @@ El proyecto está organizado en varios módulos para mantener el código limpio 
 
 
 <div align="center" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
-    <img width="700" style="margin-bottom: 1rem; margin-top: 1.5rem;" src="imagenes/readme/menu.png"/>
-    <img width="700" style="margin-bottom: 1rem; margin-top: 1.5rem;" src="imagenes/readme/juego_trivia.png"/>
+    <img width="500" style="margin-bottom: 1rem; margin-top: 1.5rem;" src="imagenes/readme/menu.png"/>
+    <img width="500" style="margin-bottom: 1rem; margin-top: 1.5rem;" src="imagenes/readme/juego_trivia.png"/>
 </div>
 
 # Función principal

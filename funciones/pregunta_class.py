@@ -2,7 +2,7 @@ from .dibujar import dibujar_texto, get_font
 import random
 
 class Pregunta: 
-    def __init__(self, diccionario: dict) -> None: 
+    def __init__(self, diccionario: dict, tamano_fuente,color_texto,) -> None: 
         # variables de instancia
         self.pregunta = diccionario["pregunta"] 
         self.opciones = diccionario["opciones"]
@@ -10,7 +10,18 @@ class Pregunta:
         self.dificultad = diccionario["dificultad"]
         self.posicion_x_inicial = 400
         self.posicion_y_inicial = 550  # posicion inicial
-       
+        self.tamano_fuente = tamano_fuente
+        self.color_texto = color_texto
+        # rectangulo de cada opcion
+        self.recta = []
+        self.texto = []
+        print("self texto", self.texto)
+        for i in range(len(self.opciones)):
+            texto = get_font(tamano_fuente).render(self.opciones[i], True, color_texto)
+            recta_texto  = texto.get_rect(center=(self.posicion_x_inicial, self.posicion_y_inicial))
+            self.texto.append(texto)
+            self.recta.append(recta_texto)
+        self.actualizar_rectas()
     
     def mostrar_preguntas(self,ventana, color_texto:tuple):
         """mostrar preguntas
@@ -20,14 +31,33 @@ class Pregunta:
             color_texto(tuple): color para el texto
         """
         dibujar_texto(ventana, self.pregunta, 10, color_texto,None,(600,430))
-    
-    def retornar_opciones(self) -> list:
-        """retornan opciones
-
-        Returns:
-            list: lista de opciones
-        """
-        return self.opciones
+        
+    def actualizar_rectas(self):
+                
+    # Reiniciar la posición Y para las opciones
+        posicion_x = self.posicion_x_inicial
+        posicion_y = self.posicion_y_inicial
+        contador = 0
+        # Recorrer las opciones
+        for recta in self.recta:
+            if contador < 2:
+                recta.center = (posicion_x, posicion_y)
+                posicion_y += 80
+            else:
+                # Cambiar a la segunda columna
+                posicion_x += 400
+                posicion_y = self.posicion_y_inicial  # Resetear Y para la nueva columna
+                recta.center = (posicion_x, posicion_y)
+                posicion_y += 80
+                contador = 0
+            contador += 1
+            
+    def mostrar_opciones(self,ventana):
+        for i in range(len(self.opciones)):
+            texto_render = self.texto[i]
+            texto_recta = self.recta[i]
+            ventana.blit(texto_render,texto_recta)
+                
     
     def capturar_mouse_movimiento(self, mouse_posicion:tuple) -> str:  
         """Capturar el movimiento del mouse  
@@ -39,29 +69,12 @@ class Pregunta:
             str: opcion elegida
         """
         retorno = None  # Si no se clickeó ninguna opción, devuelve None
-        posicion_y = self.posicion_y_inicial
-        posicion_x = self.posicion_x_inicial
-    
-        contador = 0
-    
-        for opcion in self.opciones:
-            if contador < 2:
-                texto_renderizado = get_font(20).render(opcion, True, (255, 255, 255))
-                texto_rect = texto_renderizado.get_rect(center=(posicion_x, posicion_y))
-                if texto_rect.collidepoint(mouse_posicion):
-                    retorno = opcion  # devuelve la opcion que clikeó
-                posicion_y += 80
-            else:
-                # Cambiar a la segunda columna
-                posicion_x += 400
-                posicion_y = self.posicion_y_inicial  # Resetear Y para la nueva columna
-                texto_renderizado = get_font(20).render(opcion, True, (255, 255, 255))
-                texto_rect = texto_renderizado.get_rect(center=(posicion_x, posicion_y))
-                if texto_rect.collidepoint(mouse_posicion):
-                    retorno = opcion  # devuelve la opcion que clikeó
-                posicion_y += 80
-                contador = 0
-            contador += 1
+     
+        for i in range(len(self.recta)):
+            if self.recta[i].collidepoint(mouse_posicion):
+                print("texto", self.opciones[i])
+                retorno = self.opciones[i]
+                break
     
         return retorno
 

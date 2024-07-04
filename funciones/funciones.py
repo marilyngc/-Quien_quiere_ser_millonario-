@@ -15,7 +15,7 @@ def obtener_preguntas_progresivas(lista_diccionario:list[dict], cantidad_pregunt
     if cantidad_preguntas <= len(lista_diccionario):
         for i in range(len(lista_diccionario)):
             if cantidad_preguntas == i:
-                pregunta = Pregunta(lista_diccionario[i])
+                pregunta = Pregunta(lista_diccionario[i],20,(255, 255, 255))
                 break
         
     return pregunta

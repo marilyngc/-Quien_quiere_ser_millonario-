@@ -42,8 +42,8 @@ def actulizar_pantalla_preguntas(ventana:tuple, background:str, background_opcio
                 
     if bandera:    
         # preguntas y opcines originales
-        lista_opciones = pregunta.retornar_opciones()
-        mostrar_opciones(ventana,lista_opciones,(400,550))
+        pregunta.mostrar_opciones(ventana)
+
     
     # botones comodines 
     comodin.mostrar_boton(ventana)

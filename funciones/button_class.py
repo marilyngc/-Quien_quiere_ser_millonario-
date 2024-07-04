@@ -4,7 +4,6 @@ class Button(): #mostrar
     def __init__(self, posicion,orientacion,imagen_url):
         self.posicion_x_inicial = posicion[0]
         self.posicion_y_inicial = posicion[1]
-
         self.orientacion = orientacion
         # rectangulo de cada imagen
         self.recta = []
@@ -13,8 +12,6 @@ class Button(): #mostrar
         for i in range(len(self.imagen)):
             imagen_load = pygame.image.load(self.imagen[i])
             recta_imagenes  = imagen_load.get_rect(center=(self.posicion_x_inicial, self.posicion_y_inicial))
-            print(recta_imagenes)
-            print(imagen_load)
             self.imagen_load.append(imagen_load)
             self.recta.append(recta_imagenes)
         # Actualizar las posiciones iniciales de los rectángulos
@@ -59,7 +56,6 @@ class Button(): #mostrar
         retorno = False
         for i in range(len(self.recta)):
             if self.recta[i].collidepoint(mouse_posicion):
-                print(self.recta[i])
                 retorno = f"Imagen {i + 1}"
            
         return retorno    

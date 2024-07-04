@@ -2,9 +2,9 @@ from .dibujar import dibujar_texto, get_font
 import random
 
 class Pregunta: 
-    def __init__(self, diccionario: dict) -> None: # este metodo inicial se llama a llamar sin que lo lllame
+    def __init__(self, diccionario: dict) -> None: 
         # variables de instancia
-        self.pregunta = diccionario["pregunta"] # -> atributos - son las que tienen un objeto
+        self.pregunta = diccionario["pregunta"] 
         self.opciones = diccionario["opciones"]
         self.correcta = diccionario["correcta"]
         self.dificultad = diccionario["dificultad"]
@@ -137,6 +137,7 @@ class Pregunta:
         Returns:
             pista: str de la pista
         """
+        
         for diccionario in lista_pista:
             if self.pregunta == diccionario["pregunta"]:
                 pista = diccionario["pista"]

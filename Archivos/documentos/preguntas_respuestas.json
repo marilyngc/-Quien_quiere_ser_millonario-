@@ -59,57 +59,57 @@
   "componentes_computadora": [ 
     {
       "pregunta": "¿Qué componente de la computadora es responsable de ejecutar programas y procesar datos?",
-      "correcta": "CPU (Unidad Central de Procesamiento)",
-      "opciones": ["GPU (Unidad de Procesamiento Gráfico)", "RAM (Memoria de Acceso Aleatorio)", "SSD (Unidad de Estado Sólido)","CPU (Unidad Central de Procesamiento)"],
+      "correcta": "CPU",
+      "opciones": ["GPU","CPU", "RAM", "SSD"],
       "dificultad": "facil"
     },
     {
       "pregunta": "¿Qué tipo de memoria es volátil y se utiliza para almacenar datos temporalmente mientras la computadora está encendida?",
-      "correcta": "RAM (Memoria de Acceso Aleatorio)",
-      "opciones": ["HDD (Disco Duro)", "ROM (Memoria de Solo Lectura)", "SSD (Unidad de Estado Sólido)","RAM (Memoria de Acceso Aleatorio)"],
+      "correcta": "RAM",
+      "opciones": ["HDD", "ROM", "SSD","RAM"],
       "dificultad": "facil"
     },
     {
       "pregunta": "¿Qué dispositivo de almacenamiento utiliza discos magnéticos para almacenar datos?",
-      "correcta": "Disco duro (HDD)",
-      "opciones": ["SSD (Unidad de Estado Sólido)", "RAM (Memoria de Acceso Aleatorio)", "CPU (Unidad Central de Procesamiento)","Disco duro (HDD)"],
+      "correcta": "Disco duro",
+      "opciones": ["SSD","Disco duro", "RAM", "CPU"],
       "dificultad": "facil"
     },
     {
       "pregunta": "¿Qué componente es responsable de convertir la corriente alterna (AC) de la toma de corriente en corriente continua (DC) utilizada por la computadora?",
-      "correcta": "Fuente de alimentación (PSU)",
-      "opciones": ["GPU (Unidad de Procesamiento Gráfico)", "HDD (Disco Duro)", "Placa base (Motherboard)","Fuente de alimentación (PSU)"],
+      "correcta": "Fuente de alimentación",
+      "opciones": ["Fuente de alimentación","GPU", "HDD", "Placa base"],
       "dificultad": "medio"
     },
     {
       "pregunta": "¿Cuál es el nombre del componente que conecta todos los demás componentes de la computadora y permite la comunicación entre ellos?",
-      "correcta": "Placa base (Motherboard)",
-      "opciones": ["CPU (Unidad Central de Procesamiento)", "RAM (Memoria de Acceso Aleatorio)", "Fuente de alimentación (PSU)","Placa base (Motherboard)"],
+      "correcta": "Placa base",
+      "opciones": ["CPU", "RAM", "Fuente de alimentación","Placa base"],
       "dificultad": "medio"
       
     },
     {
       "pregunta": "¿Qué tipo de memoria no volátil se utiliza comúnmente para almacenar el sistema operativo y los archivos del usuario en una computadora moderna?",
-      "correcta": "SSD (Unidad de Estado Sólido)",
-      "opciones": ["RAM (Memoria de Acceso Aleatorio)", "GPU (Unidad de Procesamiento Gráfico)", "ROM (Memoria de Solo Lectura)","SSD (Unidad de Estado Sólido)"],
+      "correcta": "SSD",
+      "opciones": ["RAM", "GPU","SSD", "ROM"],
       "dificultad": "medio"
     },
     {
       "pregunta": "¿Qué interfaz comúnmente utilizada conecta dispositivos periféricos como ratones y teclados a la computadora?",
-      "correcta": "USB (Universal Serial Bus)",
-      "opciones": ["HDMI (Interfaz Multimedia de Alta Definición)", "PCIe (Interconexión de Componentes Periféricos Express)", "SATA (Interfaz de Adjuntos de Tecnología Avanzada en Serie)","USB (Universal Serial Bus)"],
+      "correcta": "USB",
+      "opciones": ["USB","HDMI", "PCIe", "SATA"],
       "dificultad": "dificil"
     },
     {
       "pregunta": "¿Qué tecnología de pantalla utiliza diodos emisores de luz para producir imágenes y es conocida por su alta eficiencia energética y contraste?",
-      "correcta": "Pantalla OLED (Diodo Orgánico Emisor de Luz)",
-      "opciones": ["Pantalla LCD (Pantalla de Cristal Líquido)", "Pantalla CRT (Tubo de Rayos Catódicos)", "Pantalla LED (Diodo Emisor de Luz)","Pantalla OLED (Diodo Orgánico Emisor de Luz)"],
+      "correcta": "Pantalla OLED",
+      "opciones": ["Pantalla LCD", "Pantalla CRT","Pantalla OLED", "Pantalla LED"],
       "dificultad": "dificil"
     },
     {
       "pregunta": "¿Qué tipo de memoria es utilizada para almacenar las instrucciones básicas del sistema y no se borra al apagar la computadora?",
-      "correcta": "ROM (Memoria de Solo Lectura)",
-      "opciones": ["RAM (Memoria de Acceso Aleatorio)", "HDD (Disco Duro)", "SSD (Unidad de Estado Sólido)","ROM (Memoria de Solo Lectura)"],
+      "correcta": "ROM",
+      "opciones": ["RAM","ROM", "HDD", "SSD"],
       "dificultad": "dificil"
     }
   ]

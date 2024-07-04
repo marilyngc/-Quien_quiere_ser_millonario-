@@ -139,12 +139,12 @@ def mostrar_ganancias(matriz_ganancias:list, ventana:tuple):
         ventana (tuple): ventana de la pantalla
     """
     posicion_x = 1000
-    posicion_y = 100
+    posicion_y = 90
     
     for i in range(len(matriz_ganancias) -1, -1, -1): 
         for j in range(len(matriz_ganancias[i])):
-            dibujar_texto(ventana,f"{determinar_formato_ganancia(str(matriz_ganancias[i][j])):3}", 20, (255,255,255), (0,0,0), (posicion_x, posicion_y))   
-            posicion_y += 50
+            dibujar_texto(ventana,f"{determinar_formato_ganancia(str(matriz_ganancias[i][j])):3}", 20, (255,255,255), None, (posicion_x, posicion_y))   
+            posicion_y +=32
             
 def mostrar_ultima_ganancia(ganancia:int, ventana:tuple, posicion:tuple): 
     """Mostrar la ultima ganancia

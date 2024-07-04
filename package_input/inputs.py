@@ -10,7 +10,7 @@ def verificar_ingreso_datos(bandera:bool) -> bool:
     """
     retorno = True
     if bandera == False:
-        print("Ya utilizo el comodin")
+        print("Ya utilizo el comodin") # lo dejamos para defender oralmente
         retorno = False
     
     return retorno

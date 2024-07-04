@@ -36,6 +36,7 @@ def obtener_evento_teclado(ventana, texto, color_activo, color_inactivo, mouse_p
                     texto += evento.unicode
     
     return texto
+
 def obtener_evento(boton:Button, mouse_posicion:tuple) -> Button | None :  
     """Obtener evento
 
@@ -52,15 +53,11 @@ def obtener_evento(boton:Button, mouse_posicion:tuple) -> Button | None :
         if evento.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-        
         elif evento.type == pygame.MOUSEBUTTONDOWN:
             
             if  boton_clickeado:
                 retorno = boton_clickeado
-        
-        # elif evento.type == pygame.MOUSEMOTION:
-        #     boton.actualizar_color_texto(boton_clickeado, ventana)
-    
+      
     return retorno
 
 def obtener_evento_comodines(comodin:Button, pregunta:Pregunta, lista_pistas:list[dict], lista_banderas:list[tuple], mouse_posicion:tuple, recurso:str) -> list: 
@@ -124,18 +121,13 @@ def obtener_evento_videojuegos(pregunta:Pregunta, matriz_ganancia:list, mouse_po
 
         elif evento.type == pygame.MOUSEBUTTONDOWN :
             opcion_clickeada = pregunta.capturar_mouse_movimiento(mouse_posicion)
-            # comodin_clickeado = comodin.mouse_movimiento(mouse_posicion)
             
             if opcion_clickeada :
-                
                 if pregunta.es_correcta(opcion_clickeada):
                     opcion_correcta = "correcta"
                     pregunta.determinar_ganancia(matriz_ganancia, 10000,50000,273333, cantidad_preguntas, ultima_ganancia)
                 else :  
-                    opcion_correcta = "incorrecta"
-            
-            # if comodin_clickeado:
-            #     obtener_evento_comodines(comodin_clickeado, pregunta, lista_pistas, lista_banderas)        
+                    opcion_correcta = "incorrecta"     
                 
     return opcion_correcta        
 

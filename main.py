@@ -95,7 +95,7 @@ def perdedor(): #igual
         dibujar_texto(ventana,"¿Quieres jugar de nuevo?", 30, BLANCO, None,(600,300))
         mostrar_ultima_ganancia(score, ventana, (600,210))
         boton_clickeado = obtener_evento(boton, mouse_posicion)
-        print(boton_clickeado)
+     
         if boton_clickeado == "Imagen 1":
             main_menu()
         elif boton_clickeado == "Imagen 2":
@@ -107,17 +107,15 @@ def perdedor(): #igual
         clock.tick(15)
 
 def video_juegos():
-    #TODO ESTO LUEGO EN UNA FUNCION
-    
     cantidad_preguntas = 0
     
     N = 1
-    M = 9
+    M = len(preguntas_respuestas["videojuegos"])
     matriz_ganancias = [[0]*N for _ in range(M)]
     
     lista_comodines = ["imagenes\comodines\comodin_cincuenta.png","imagenes\comodines\comodin_llamada.png","imagenes\comodines\comodin_publico.png"]
     # comodines
-    comodin = Button((130,70),"Horizontal",lista_comodines)
+    comodin = Button((90,70),"Vertical",lista_comodines)
     recurso_comodin = None
     
     lista_banderas = [True, True, True]
@@ -164,6 +162,10 @@ def video_juegos():
             ganador()
         
         # mostrar contador
+        dibujar_imagen(ventana,"imagenes\Background_contador.png",(600,70))
+        dibujar_texto(ventana,str(tiempo_transcurrido),20,BLANCO, None,(600,70) ) 
+        
+        # comodin
         comodin.mostrar_boton(ventana)
       
         pygame.display.update()
@@ -171,33 +173,81 @@ def video_juegos():
         clock.tick(15)
         
 
-def componentes(): #OPCIONAL
-    clock = pygame.time.Clock()
-    while True:
-        # menu_mouse_posicion = pygame.mouse.get_pos()
-        
-        ventana.blit(background,(0,0)) 
-        dibujar_texto(ventana,"Estamos en componentes", 30, BLANCO, None,(550,100))
-        
-        # EVENTOS
-        lista_eventos = pygame.event.get()
-        for evento in lista_eventos:
-            if evento.type == pygame.QUIT: # pregunto si presiono la X de la ventana
-                pygame.quit()  
-                sys.exit()     
+
+def componentes():
+    #TODO ESTO LUEGO EN UNA FUNCION
     
-            elif evento.type == pygame.MOUSEBUTTONDOWN :
-                pass
+    cantidad_preguntas = 0
+    
+    N = 1
+    M = len(preguntas_respuestas["componentes_computadora"])
+    matriz_ganancias = [[0]*N for _ in range(M)]
+    
+    lista_comodines = ["imagenes\comodines\comodin_cincuenta.png","imagenes\comodines\comodin_llamada.png","imagenes\comodines\comodin_publico.png"]
+    # comodines
+    comodin = Button((90,70),"Vertical",lista_comodines)
+    recurso_comodin = None
+    
+    lista_banderas = [True, True, True]
+
+    lista_ultima_ganancia.pop(0)
+    ultima_ganancia = 0
+    
+    clock = pygame.time.Clock()
+    tiempo_inicial = pygame.time.get_ticks()
+    
+    while True:
+        pregunta = obtener_preguntas_progresivas(preguntas_respuestas["componentes_computadora"],cantidad_preguntas)
         
+        mouse_posicion = pygame.mouse.get_pos()
+        
+        if recurso_comodin == None:
+            recurso_comodin = obtener_evento_comodines(comodin, pregunta, lista_pistas, lista_banderas, mouse_posicion, recurso_comodin)
+        
+        
+        # dibujar_texto(ventana, lista_usuario[0],20,BLANCO, NEGRO, (10,10))
+        actulizar_pantalla_preguntas(ventana, background,background_opciones, 10 ,BLANCO, None, pregunta, comodin, matriz_ganancias, recurso_comodin)
+        
+        evento = obtener_evento_videojuegos(pregunta, matriz_ganancias, mouse_posicion, cantidad_preguntas, ultima_ganancia)
+        if evento == "correcta":
+            tiempo_inicial = pygame.time.get_ticks()
+            ultima_ganancia = determinar_ultima_ganancia(matriz_ganancias, lambda ganacia: ganacia != 0)
+            recurso_comodin = None
+            cantidad_preguntas += 1
+            
+        elif evento == "incorrecta":
+            lista_ultima_ganancia.append(ultima_ganancia)
+            perdedor()    
+         
+        tiempo_actual = pygame.time.get_ticks()
+        tiempo_transcurrido = round((tiempo_actual - tiempo_inicial) * 0.001)
+        
+        if tiempo_transcurrido == 30:
+            lista_ultima_ganancia.append(ultima_ganancia)
+            perdedor()
+
+        if cantidad_preguntas == len(preguntas_respuestas["videojuegos"]):
+            ultima_ganancia = determinar_ultima_ganancia(matriz_ganancias,lambda ganancia: ganancia != 0) + 1
+            lista_ultima_ganancia.append(ultima_ganancia)
+            ganador()
+        
+        # mostrar contador
+        dibujar_imagen(ventana,"imagenes\Background_contador.png",(600,70))
+        dibujar_texto(ventana,str(tiempo_transcurrido),20,BLANCO, None,(600,70) ) 
+        
+        # comodin
+        comodin.mostrar_boton(ventana)
+      
         pygame.display.update()
-        clock.tick(15)
         
+        clock.tick(15)
+             
 def jugar():
     clock = pygame.time.Clock()
     
     fuente = get_font(20)
 
-    input_box = pygame.Rect(500,550,200,32) 
+    input_box = pygame.Rect(900,550,200,32) 
 
     
     color_activo = AZUL
@@ -219,41 +269,41 @@ def jugar():
         
         # texto = obtener_evento_teclado(ventana, texto, color_activo, color_inactivo, mouse_posicion, activo, color_actual, input_box) 
 
-        # lista_eventos = pygame.event.get() 
-        # for evento in lista_eventos: #pygame.event.get()
-        #     if evento.type == pygame.QUIT: 
-        #         pygame.quit()
-        #         sys.exit()
-        #     elif evento.type == pygame.MOUSEBUTTONDOWN: #presiono el boton del mouse 
-        #         if input_box.collidepoint(mouse_posicion):
-        #             activo = not activo #no activo
-        #             pygame.draw.rect(ventana, color_actual, input_box,2)
-        #         if activo:
-        #             color_actual = color_activo
-        #         else:
-        #             color_actual = color_inactivo
+        lista_eventos = pygame.event.get() 
+        for evento in lista_eventos: #pygame.event.get()
+            if evento.type == pygame.QUIT: 
+                pygame.quit()
+                sys.exit()
+            elif evento.type == pygame.MOUSEBUTTONDOWN: #presiono el boton del mouse 
+                if input_box.collidepoint(mouse_posicion):
+                    activo = not activo #no activo
+                    pygame.draw.rect(ventana, color_actual, input_box,2)
+                if activo:
+                    color_actual = color_activo
+                else:
+                    color_actual = color_inactivo
                     
-        #     elif evento.type == pygame.KEYDOWN:
-        #         if activo:
-        #             if evento.key == pygame.K_BACKSPACE:
-        #                 texto = texto[:-1] #hasta el final menos 1
-        #             elif evento.key == pygame.K_ESCAPE:
-        #                 texto = ""
-        #             elif evento.key == pygame.K_RETURN:
-        #                 activo = not activo
-        #                 if activo:
-        #                     color_actual = color_activo
-        #                 else:
-        #                     color_actual = color_inactivo
-        #             else:
-        #                 texto += evento.unicode
+            elif evento.type == pygame.KEYDOWN:
+                if activo:
+                    if evento.key == pygame.K_BACKSPACE:
+                        texto = texto[:-1] #hasta el final menos 1
+                    elif evento.key == pygame.K_ESCAPE:
+                        texto = ""
+                    elif evento.key == pygame.K_RETURN:
+                        activo = not activo
+                        if activo:
+                            color_actual = color_activo
+                        else:
+                            color_actual = color_inactivo
+                    else:
+                        texto += evento.unicode
                         
-        # text_surface = fuente.render(texto, True, color_actual)
-        # ventana.blit(text_surface,(input_box.x+5, input_box.y+5))
+        text_surface = fuente.render(texto, True, color_actual)
+        ventana.blit(text_surface,(input_box.x+5, input_box.y+5))
         
-        # pygame.draw.rect(ventana, color_actual, input_box,2)
+        pygame.draw.rect(ventana, color_actual, input_box,2)
         
-        # lista_usuario = [texto]
+        lista_usuario = [texto]
         
         boton_clickeado = obtener_evento(boton, mouse_posicion)
         if boton_clickeado == "Imagen 1":

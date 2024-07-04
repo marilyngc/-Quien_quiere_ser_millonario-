@@ -1,7 +1,9 @@
-from .dibujar import dibujar_texto
+from .dibujar import dibujar_texto, dibujar_imagen
 from .dibujar import mostrar_ganancias, mostrar_porcentajes,mostrar_opciones
 from .pregunta_class import Pregunta
 from .button_class import Button
+
+
 
 def actulizar_pantalla_preguntas(ventana:tuple, background:str, background_opciones:str, tamano_texto:int, color_texto:tuple, color_fondo:tuple, pregunta:Pregunta, comodin:Button, ganancia:list, recurso_comodin:list|None):
     """Actualizar pantalla juego
@@ -19,7 +21,10 @@ def actulizar_pantalla_preguntas(ventana:tuple, background:str, background_opcio
         recurso_comodin (list | None): list lista con los recursos de los comodines | None si no se clickeo un comodin
     """
     ventana.blit(background,(0,0)) 
-    ventana.blit(background_opciones,(0,0)) 
+    ventana.blit(background_opciones,(0,0))
+    
+    # tabla de ganancia
+    dibujar_imagen(ventana,"imagenes\puntaje.png",(1000,210))
     mostrar_ganancias(ganancia, ventana)
     
     bandera = True

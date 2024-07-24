@@ -8,9 +8,6 @@
 - Celis Marilyn
 
 
-## :link: Link al proyecto
-- [Gameplay](https://youtu.be/0ecRS4OHXCM?si=Tsl9w0mXD58-8HUn)
-
 ## :video_game: Juego 
 <div align="center">
 <img width="200" style="margin-bottom: 1rem" src="imagenes\readme\millonario.png" />

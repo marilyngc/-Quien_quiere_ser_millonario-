@@ -7,6 +7,9 @@
 - Cortes Malena
 - Celis Marilyn
 
+## :link: Link al proyecto
+- [Gameplay](https://www.youtube.com/watch?v=Sey38ziXK74)
+
 
 ## :video_game: Juego 
 <div align="center">
